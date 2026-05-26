@@ -31,7 +31,7 @@ const Navbar = () => {
               <Link href={"/"}>Home</Link>
             </li>
             <li>
-              <Link href={"/protected-route"}>Protected</Link>
+              <Link href={"/dashboard/stocks"}>Stocks</Link>
             </li>
             <li>
               <Link href={"/admin"}>Admin</Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
             <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"/protected-route"}>Protected</Link>
+            <Link href={"/dashboard/stocks"}>Stocks</Link>
           </li>
           <li>
             <Link href={"/admin"}>Admin</Link>
