@@ -3,13 +3,13 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div class="navbar bg-base-100 shadow-sm">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <div tabIndex="0" role="button" class="btn btn-ghost lg:hidden">
+    <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex="0" role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
+              className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link href={"/"}>Home</Link>
@@ -38,10 +38,10 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a class="btn btn-ghost text-xl">AuthStarter</a>
+        <a className="btn btn-ghost text-xl">AuthStarter</a>
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
           <li>
             <Link href={"/"}>Home</Link>
           </li>
@@ -53,7 +53,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div class="navbar-end">
+      <div className="navbar-end">
         <AuthButton />
       </div>
     </div>
