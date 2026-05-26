@@ -9,8 +9,6 @@ interface Stock {
   _id: string;
   ticker: string;
   company: string;
-  positionSize: number;
-  averageCost: number;
 }
 
 const StocksPage = async () => {
@@ -31,7 +29,23 @@ const StocksPage = async () => {
     <main>
       <div className="page-container w-[95%] mx-auto">
         <h1>Stocks Page</h1>
-        <form action=""></form>
+        <form
+          action=""
+          className="flex justify-between items-center w-[95%] mx-auto"
+        >
+          <label htmlFor="ticker">Ticker: </label>
+          <input type="text" name="ticker" id="ticker" className="input mr-4" />
+
+          <label htmlFor="company">Company: </label>
+          <input
+            type="text"
+            name="company"
+            id="company"
+            className="input mr-4"
+          />
+
+          <button className="btn">Add Stock</button>
+        </form>
         <StocksTable stocks={stocks} />
       </div>
     </main>
