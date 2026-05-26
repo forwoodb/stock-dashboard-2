@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/app/lib/auth";
 import StocksTable from "@/app/components/StocksTable";
+import { revalidatePath } from "next/cache";
 
 interface Stock {
   _id: string;
@@ -25,12 +26,26 @@ const StocksPage = async () => {
   const data = await Stock.find({}).lean();
   const stocks: Stock[] = JSON.parse(JSON.stringify(data));
 
+  const createStockAction = async (formData: FormData) => {
+    "use server";
+    await connectDb();
+
+    const ticker = formData.get("ticker");
+    const company = formData.get("company");
+
+    const stock = await new Stock({ ticker, company });
+
+    await stock.save();
+
+    revalidatePath("/dashboard/stocks");
+  };
+
   return (
     <main>
       <div className="page-container w-[95%] mx-auto">
         <h1>Stocks Page</h1>
         <form
-          action=""
+          action={createStockAction}
           className="flex justify-between items-center w-[95%] mx-auto"
         >
           <label htmlFor="ticker">Ticker: </label>
