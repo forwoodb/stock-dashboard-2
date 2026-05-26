@@ -3,10 +3,14 @@ import Stock from "@/app/models/Stock";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/app/lib/auth";
+import StocksTable from "@/app/components/StocksTable";
 
 interface Stock {
   _id: string;
   ticker: string;
+  company: string;
+  positionSize: number;
+  averageCost: number;
 }
 
 const StocksPage = async () => {
@@ -24,25 +28,13 @@ const StocksPage = async () => {
   const stocks: Stock[] = JSON.parse(JSON.stringify(data));
 
   return (
-    <div>
-      <h1>Stocks Page</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Ticker</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stocks.map((stock) => {
-            return (
-              <tr key={stock._id}>
-                <td>{stock.ticker}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <main>
+      <div className="page-container w-[95%] mx-auto">
+        <h1>Stocks Page</h1>
+        <form action=""></form>
+        <StocksTable stocks={stocks} />
+      </div>
+    </main>
   );
 };
 
