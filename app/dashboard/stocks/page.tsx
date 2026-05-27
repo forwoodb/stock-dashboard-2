@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/app/lib/auth";
 import StocksTable from "@/app/components/StocksTable";
 import { revalidatePath } from "next/cache";
+import StockForm from "@/app/components/StockForm";
 
 interface Stock {
   _id: string;
@@ -55,23 +56,7 @@ const StocksPage = async () => {
     <main>
       <div className="page-container w-[95%] mx-auto">
         <h1>Stocks Page</h1>
-        <form
-          action={createStockAction}
-          className="flex justify-between items-center w-[95%] mx-auto"
-        >
-          <label htmlFor="ticker">Ticker: </label>
-          <input type="text" name="ticker" id="ticker" className="input mr-4" />
-
-          <label htmlFor="company">Company: </label>
-          <input
-            type="text"
-            name="company"
-            id="company"
-            className="input mr-4"
-          />
-
-          <button className="btn">Add Stock</button>
-        </form>
+        <StockForm formAction={createStockAction} />
         <StocksTable stocks={stocks} deleteStock={deleteStockAction} />
       </div>
     </main>
