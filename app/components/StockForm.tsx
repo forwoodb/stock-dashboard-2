@@ -1,4 +1,8 @@
-const StockForm = ({ formAction }) => {
+interface StockFormProps {
+  formAction: (formData: FormData) => Promise<void>;
+}
+
+const StockForm = ({ formAction }: StockFormProps) => {
   return (
     <form
       action={formAction}
