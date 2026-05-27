@@ -6,12 +6,7 @@ import { auth } from "@/app/lib/auth";
 import StocksTable from "@/app/components/StocksTable";
 import { revalidatePath } from "next/cache";
 import StockForm from "@/app/components/StockForm";
-
-interface Stock {
-  _id: string;
-  ticker: string;
-  company: string;
-}
+import { StockType } from "@/app/lib/types";
 
 const StocksPage = async () => {
   await connectDb();
@@ -25,7 +20,7 @@ const StocksPage = async () => {
   }
 
   const data = await Stock.find({}).lean();
-  const stocks: Stock[] = JSON.parse(JSON.stringify(data));
+  const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
   const createStockAction = async (formData: FormData) => {
     "use server";
