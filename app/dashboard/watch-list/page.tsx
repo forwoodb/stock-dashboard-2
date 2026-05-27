@@ -5,14 +5,14 @@ import Stock from "@/app/models/Stock";
 const WatchlistPage = async () => {
   await connectDb();
 
-  const data = await Stock.find({}).lean();
+  const data = await Stock.find({ watchList: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
   console.log(stocks);
 
   return (
     <div>
       <h1>Watch List Page</h1>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Ticker</th>
