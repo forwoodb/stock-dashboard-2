@@ -1,6 +1,12 @@
-import React from "react";
+import { connectDb } from "@/app/lib/mongodb";
+import Stock from "@/app/models/Stock";
 
-const WatchlistPage = () => {
+const WatchlistPage = async () => {
+  await connectDb();
+
+  const stocks = await Stock.find({});
+  console.log(stocks);
+
   return (
     <div>
       <h1>Watch List Page</h1>
