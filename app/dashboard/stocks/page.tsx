@@ -56,7 +56,12 @@ const StocksPage = async () => {
     <main>
       <div className="page-container w-[95%] mx-auto">
         <h1>Stocks Page</h1>
-        <StockForm formAction={createStockAction} />
+        <StockForm
+          mode="create"
+          formAction={createStockAction}
+          ticker=""
+          company=""
+        />
         <StocksTable stocks={stocks} deleteStock={deleteStockAction} />
       </div>
     </main>

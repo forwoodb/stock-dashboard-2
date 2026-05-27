@@ -1,6 +1,7 @@
 import StockForm from "@/app/components/StockForm";
 import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
+import { redirect } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,12 +19,18 @@ const EditStockPage = async ({ params }: PageProps) => {
     "use server";
     await connectDb();
 
-    console.log(formData);
+    const ticker = formData.get("ticker");
+    const company = formData.get("company");
+
+    await Stock.findByIdAndUpdate(id, { ticker, company });
+
+    redirect("/dashboard/stocks");
   };
   return (
     <div>
       <h1>Edit Stock</h1>
       <StockForm
+        mode="edit"
         formAction={updateStockAction}
         ticker={stock.ticker}
         company={stock.company}

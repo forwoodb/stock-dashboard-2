@@ -1,10 +1,11 @@
 interface StockFormProps {
+  mode: string;
   formAction: (formData: FormData) => Promise<void>;
   ticker: string;
   company: string;
 }
 
-const StockForm = ({ formAction, ticker, company }: StockFormProps) => {
+const StockForm = ({ mode, formAction, ticker, company }: StockFormProps) => {
   return (
     <form
       action={formAction}
@@ -28,7 +29,9 @@ const StockForm = ({ formAction, ticker, company }: StockFormProps) => {
         className="input mr-4"
       />
 
-      <button className="btn">Add Stock</button>
+      <button className="btn">
+        {mode === "create" ? "Add" : "Update"} Stock
+      </button>
     </form>
   );
 };
