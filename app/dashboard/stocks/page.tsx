@@ -40,6 +40,17 @@ const StocksPage = async () => {
     revalidatePath("/dashboard/stocks");
   };
 
+  const deleteStockAction = async (formData: FormData) => {
+    "use server";
+    await connectDb();
+
+    const id = formData.get("id");
+
+    await Stock.findByIdAndDelete(id);
+
+    revalidatePath("/dashboard/stocks");
+  };
+
   return (
     <main>
       <div className="page-container w-[95%] mx-auto">
@@ -61,7 +72,7 @@ const StocksPage = async () => {
 
           <button className="btn">Add Stock</button>
         </form>
-        <StocksTable stocks={stocks} />
+        <StocksTable stocks={stocks} deleteStock={deleteStockAction} />
       </div>
     </main>
   );

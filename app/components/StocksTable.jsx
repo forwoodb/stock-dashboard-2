@@ -1,4 +1,4 @@
-const StocksTable = ({ stocks }) => {
+const StocksTable = ({ stocks, deleteStock }) => {
   return (
     <table className="table">
       <thead>
@@ -17,7 +17,10 @@ const StocksTable = ({ stocks }) => {
                 <button className="btn">Edit</button>
               </td>
               <td>
-                <button className="btn">Delete</button>
+                <form action={deleteStock}>
+                  <input type="hidden" name="id" defaultValue={stock._id} />
+                  <button className="btn">Delete</button>
+                </form>
               </td>
             </tr>
           );
