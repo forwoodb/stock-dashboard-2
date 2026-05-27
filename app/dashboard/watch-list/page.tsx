@@ -1,11 +1,12 @@
 import { connectDb } from "@/app/lib/mongodb";
+import { StockType } from "@/app/lib/types";
 import Stock from "@/app/models/Stock";
 
 const WatchlistPage = async () => {
   await connectDb();
 
   const data = await Stock.find({}).lean();
-  const stocks = JSON.parse(JSON.stringify(data));
+  const stocks: StockType[] = JSON.parse(JSON.stringify(data));
   console.log(stocks);
 
   return (
