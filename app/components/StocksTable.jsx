@@ -3,17 +3,32 @@ import Link from "next/link";
 import { useState } from "react";
 
 const StocksTable = ({ stocks, deleteStock }) => {
-  const [sortedStocks, setSortedStocks] = useState([]);
+  // const defaultSort = stocks.sort((a, b) => {
+  //   return a.ticker.localeCompare(b.ticker);
+  // });
 
-  const sortTable = (key) => {
-    console.log(typeof key);
+  // const [sortedStocks, setSortedStocks] = useState(defaultSort);
+  const [sortedStocks, setSortedStocks] = useState(stocks);
+  const [sortOrder, setSortOrder] = useState({ key: "ticker", order: null });
 
+  const sortTable = async (key) => {
     const sorted = stocks
       .map((stock) => {
         return stock;
       })
       .sort((a, b) => {
-        return a[key].localeCompare(b[key]);
+        if (sortOrder.order === null) {
+          setSortOrder({ key, order: "asc" });
+          return a[key].localeCompare(b[key]);
+        }
+        if (sortOrder.order === "asc") {
+          setSortOrder({ key, order: "desc" });
+          return b[key].localeCompare(a[key]);
+        }
+        if (sortOrder.order === "desc") {
+          setSortOrder({ key, order: null });
+          return stocks;
+        }
       });
 
     setSortedStocks(sorted);
