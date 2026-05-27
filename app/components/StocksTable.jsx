@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const StocksTable = ({ stocks, deleteStock }) => {
   return (
     <table className="table">
@@ -14,7 +16,12 @@ const StocksTable = ({ stocks, deleteStock }) => {
               <td>{stock.ticker}</td>
               <td>{stock.company}</td>
               <td>
-                <button className="btn">Edit</button>
+                <Link
+                  href={`/dashboard/stocks/edit/${stock._id}`}
+                  className="btn"
+                >
+                  Edit
+                </Link>
               </td>
               <td>
                 <form action={deleteStock}>
