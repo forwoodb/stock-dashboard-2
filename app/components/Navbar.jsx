@@ -37,6 +37,9 @@ const Navbar = () => {
               <Link href={"/dashboard/watch-list"}>Watch List</Link>
             </li>
             <li>
+              <Link href={"/dashboard/position-sizes"}>Positions</Link>
+            </li>
+            <li>
               <Link href={"/admin"}>Admin</Link>
             </li>
           </ul>
@@ -53,6 +56,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link href={"/dashboard/watch-list"}>Watch List</Link>
+          </li>
+          <li>
+            <Link href={"/dashboard/position-sizes"}>Positions</Link>
           </li>
           <li>
             <Link href={"/admin"}>Admin</Link>

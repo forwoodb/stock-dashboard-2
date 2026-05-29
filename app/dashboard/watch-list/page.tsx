@@ -7,7 +7,7 @@ const WatchlistPage = async () => {
 
   const data = await Stock.find({ watchList: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
-  console.log(stocks);
+  // console.log(stocks);
 
   return (
     <div>
