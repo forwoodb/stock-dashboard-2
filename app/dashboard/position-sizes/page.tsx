@@ -11,6 +11,22 @@ const PositionsPage = async () => {
   return (
     <main>
       <h1>Position Sizes Page</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stocks.map((stock) => {
+            return (
+              <tr key={stock._id}>
+                <td>{stock.ticker}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </main>
   );
 };
