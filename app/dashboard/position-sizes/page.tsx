@@ -4,7 +4,8 @@ import Stock from "@/app/models/Stock";
 const PositionsPage = async () => {
   await connectDb();
 
-  const stocks = await Stock.find({ position: true });
+  const data = await Stock.find({ position: true }).lean();
+  const stocks = JSON.parse(JSON.stringify(data));
   console.log(stocks);
 
   return (

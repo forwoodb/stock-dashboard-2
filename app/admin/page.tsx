@@ -25,7 +25,7 @@ const AdminPage = async () => {
   //   redirect("/");
   // }
 
-  console.log(session);
+  // console.log(session);
 
   // Get users
   const data = await User.find({}).lean();
