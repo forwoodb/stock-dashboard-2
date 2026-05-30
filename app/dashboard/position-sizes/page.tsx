@@ -1,11 +1,12 @@
 import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
+import { StockType } from "@/app/lib/types";
 
 const PositionsPage = async () => {
   await connectDb();
 
   const data = await Stock.find({ position: true }).lean();
-  const stocks = JSON.parse(JSON.stringify(data));
+  const stocks: StockType[] = JSON.parse(JSON.stringify(data));
   console.log(stocks);
 
   return (
@@ -15,6 +16,7 @@ const PositionsPage = async () => {
         <thead>
           <tr>
             <th>Name</th>
+            <th>AvgCost</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +24,8 @@ const PositionsPage = async () => {
             return (
               <tr key={stock._id}>
                 <td>{stock.ticker}</td>
+                <td>{stock.averageCost}</td>
+                <td> `</td>
               </tr>
             );
           })}

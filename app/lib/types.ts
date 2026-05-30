@@ -6,4 +6,5 @@ export interface StockType {
   _id: string;
   ticker: string;
   company: string;
+  averageCost: number;
 }
