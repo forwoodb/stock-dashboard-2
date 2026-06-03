@@ -19,4 +19,14 @@ collection = db['stocks']
 
 for stock in collection.find():
   data = yf.download(tickers=stock['ticker'], period='200d', interval='1d')
-  print(data)
+
+  # Reset the index to make 'Date' a regular column
+  data.reset_index(inplace=True)
+
+  df = pd.DataFrame(data).round(2)
+
+  df = df.rename(columns={'Ticker': 'ticker'})
+  df['ticker'] = stock['ticker']
+
+  df.columns = df.columns.droplevel(1)
+  print(df)
