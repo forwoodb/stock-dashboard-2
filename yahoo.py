@@ -31,4 +31,5 @@ for stock in collection.find():
   df.columns = df.columns.droplevel(1)
 
   df['200D'] = df['Close'].rolling(200).mean().round(2)
+  df['100D'] = df['Close'].rolling(100).mean().round(2)
   print(df)
