@@ -33,4 +33,5 @@ for stock in collection.find():
   df['200D'] = df['Close'].rolling(200).mean().round(2)
   df['100D'] = df['Close'].rolling(100).mean().round(2)
   df['50D'] = df['Close'].rolling(50).mean().round(2)
+  df['20D'] = df['Close'].rolling(20).mean().round(2)
   print(df)
