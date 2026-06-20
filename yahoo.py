@@ -1,7 +1,7 @@
 import pandas as pd
 import yfinance as yf
 from pymongo import MongoClient
-# import os
+from datetime import datetime
 
 # dbUrl = 'mongodb://localhost:27017'
 dbUrl = 'mongodb+srv://forwoodb:q84ItPYwNm77gfFO@cluster0.7vsg6zn.mongodb.net/?appName=Cluster0'
@@ -16,6 +16,8 @@ client = MongoClient(dbUrl, tls=True, tlsAllowInvalidCertificates=True)
 db = client['test']
 
 collection = db['stocks']
+
+df_data = pd.DataFrame()
 
 for stock in collection.find():
   data = yf.download(tickers=stock['ticker'], period='200d', interval='1d')
@@ -37,5 +39,12 @@ for stock in collection.find():
   df['10D'] = df['Close'].rolling(10).mean().round(2)
   df['5D'] = df['Close'].rolling(5).mean().round(2)
 
+  df['Time'] = datetime.now().strftime('%H:%M:%S')
+
+  df = df[['ticker', 'Time', 'Close', '5D', '10D', '20D', '50D', '100D', '200D']]
+
   df = df.tail(1)
-  print(df)
+
+  df_data = pd.concat([df_data, df], ignore_index=True)
+
+df_data.to_csv('csv_data.csv')
