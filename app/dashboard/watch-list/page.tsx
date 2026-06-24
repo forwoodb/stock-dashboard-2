@@ -3,6 +3,7 @@ import { StockType } from "@/app/lib/types";
 import Stock from "@/app/models/Stock";
 import fs from "fs";
 import { parse } from "csv-parse/sync";
+import { revalidatePath } from "next/cache";
 
 interface csvRow {
   ticker: string;
@@ -36,7 +37,16 @@ const WatchlistPage = async () => {
 
   const toPosition = async (formData: FormData) => {
     "use server";
-    console.log("click");
+    await connectDb();
+
+    const id = formData.get("id");
+
+    await Stock.findByIdAndUpdate(id, {
+      watchList: false,
+      position: true,
+    });
+
+    revalidatePath("/dashboard/watch-list");
   };
 
   return (
@@ -71,6 +81,7 @@ const WatchlistPage = async () => {
                 <td>{stock["200D"]}</td>
                 <td>
                   <form action={toPosition}>
+                    <input type="hidden" name="id" value={stock._id} />
                     <button className="btn">Position</button>
                   </form>
                 </td>
