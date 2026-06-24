@@ -13,7 +13,15 @@ const PositionsPage = async () => {
   const csv = fs.readFileSync("csv_data.csv", "utf-8");
 
   const stockData = parse(csv, { columns: true }) as csvRow[];
-  console.log(stockData);
+
+  const merge = stocks.map((stock) => {
+    const csvRow = stockData.find((row) => {
+      return row.ticker === stock.ticker;
+    });
+    return { ...stock, ...csvRow };
+  });
+
+  console.log(merge);
 
   return (
     <main>
