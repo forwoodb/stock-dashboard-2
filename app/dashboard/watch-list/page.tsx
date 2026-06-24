@@ -34,6 +34,11 @@ const WatchlistPage = async () => {
     return { ...stock, ...csvRow };
   });
 
+  const toPosition = async (formData: FormData) => {
+    "use server";
+    console.log("click");
+  };
+
   return (
     <div>
       <h1>Watch List Page</h1>
@@ -64,6 +69,11 @@ const WatchlistPage = async () => {
                 <td>{stock["50D"]}</td>
                 <td>{stock["100D"]}</td>
                 <td>{stock["200D"]}</td>
+                <td>
+                  <form action={toPosition}>
+                    <button className="btn">Position</button>
+                  </form>
+                </td>
               </tr>
             );
           })}

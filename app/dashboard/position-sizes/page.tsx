@@ -25,7 +25,9 @@ const PositionsPage = async () => {
               <tr key={stock._id}>
                 <td>{stock.ticker}</td>
                 <td>{stock.averageCost}</td>
-                <td> `</td>
+                <td>
+                  <button className="btn">Watch</button>
+                </td>
               </tr>
             );
           })}
