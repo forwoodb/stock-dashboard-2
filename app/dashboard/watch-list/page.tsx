@@ -42,7 +42,7 @@ const WatchlistPage = async () => {
   return (
     <div>
       <h1>Watch List Page</h1>
-      <WatchListTable data={merge} formAction={toPosition} />
+      <WatchListTable mode="watchList" data={merge} formAction={toPosition} />
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import { StockInfoType } from "../lib/types";
 
 interface WatchListProps {
+  mode: string;
   data: StockInfoType[];
   formAction: (formData: FormData) => Promise<void>;
 }
 
-const WatchListTable = ({ data, formAction }: WatchListProps) => {
+const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
   return (
     <table className="table">
       <thead>
@@ -37,7 +38,9 @@ const WatchListTable = ({ data, formAction }: WatchListProps) => {
               <td>
                 <form action={formAction}>
                   <input type="hidden" name="id" value={stock._id} />
-                  <button className="btn">Position</button>
+                  <button className="btn">
+                    {mode === "watchList" ? "Position" : "WatchList"}
+                  </button>
                 </form>
               </td>
             </tr>
