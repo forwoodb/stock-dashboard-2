@@ -1,4 +1,11 @@
-const WatchListTable = ({ data, formAction }) => {
+import { StockInfoType } from "../lib/types";
+
+interface WatchListProps {
+  data: StockInfoType[];
+  formAction: (formData: FormData) => Promise<void>;
+}
+
+const WatchListTable = ({ data, formAction }: WatchListProps) => {
   return (
     <table className="table">
       <thead>

@@ -5,18 +5,7 @@ import fs from "fs";
 import { parse } from "csv-parse/sync";
 import { revalidatePath } from "next/cache";
 import WatchListTable from "@/app/components/WatchListTable";
-
-interface csvRow {
-  ticker: string;
-  Time: string;
-  Close: number;
-  "5D": number;
-  "10D": number;
-  "20D": number;
-  "50D": number;
-  "100D": number;
-  "200D": number;
-}
+import { csvRow } from "@/app/lib/types";
 
 const WatchlistPage = async () => {
   await connectDb();
