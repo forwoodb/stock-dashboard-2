@@ -1,13 +1,19 @@
 import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
-import { StockType } from "@/app/lib/types";
+import { csvRow, StockType } from "@/app/lib/types";
+import fs from "fs";
+import { parse } from "csv-parse/sync";
 
 const PositionsPage = async () => {
   await connectDb();
 
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
-  console.log(stocks);
+
+  const csv = fs.readFileSync("csv_data.csv", "utf-8");
+
+  const stockData = parse(csv, { columns: true }) as csvRow[];
+  console.log(stockData);
 
   return (
     <main>

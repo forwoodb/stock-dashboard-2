@@ -18,6 +18,8 @@ const WatchlistPage = async () => {
 
   const stockData = parse(csv, { columns: true }) as csvRow[];
 
+  console.log(stockData);
+
   const merge = stocks.map((stock) => {
     const csvRow = stockData.find((i) => {
       return i.ticker === stock.ticker;
