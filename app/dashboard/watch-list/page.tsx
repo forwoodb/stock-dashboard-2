@@ -1,11 +1,10 @@
 import { connectDb } from "@/app/lib/mongodb";
 import { StockType } from "@/app/lib/types";
 import Stock from "@/app/models/Stock";
-import fs from "fs";
-import { parse } from "csv-parse/sync";
+
 import { revalidatePath } from "next/cache";
 import WatchListTable from "@/app/components/WatchListTable";
-import { csvRow } from "@/app/lib/types";
+import { mergeCSVData } from "@/app/lib/functions";
 
 const WatchlistPage = async () => {
   await connectDb();
@@ -13,19 +12,7 @@ const WatchlistPage = async () => {
   const data = await Stock.find({ watchList: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
-  // Get CSV data
-  const csv = fs.readFileSync("csv_data.csv", "utf-8");
-
-  const stockData = parse(csv, { columns: true }) as csvRow[];
-
-  console.log(stockData);
-
-  const merge = stocks.map((stock) => {
-    const csvRow = stockData.find((i) => {
-      return i.ticker === stock.ticker;
-    });
-    return { ...stock, ...csvRow };
-  });
+  const merge = mergeCSVData(stocks);
 
   const toPosition = async (formData: FormData) => {
     "use server";
