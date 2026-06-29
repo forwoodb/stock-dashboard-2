@@ -3,6 +3,7 @@ import Stock from "@/app/models/Stock";
 import { csvRow, StockType } from "@/app/lib/types";
 import fs from "fs";
 import { parse } from "csv-parse/sync";
+import { revalidatePath } from "next/cache";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -21,7 +22,13 @@ const PositionsPage = async () => {
     return { ...stock, ...csvRow };
   });
 
-  console.log(merge);
+  const toWatchList = async (formData: FormData) => {
+    "use server";
+    const id = formData.get("id");
+
+    await Stock.findByIdAndUpdate(id, { watchList: true, position: false });
+    revalidatePath("/dashboard/position-sizes");
+  };
 
   return (
     <main>
@@ -40,7 +47,10 @@ const PositionsPage = async () => {
                 <td>{stock.ticker}</td>
                 <td>{stock.averageCost}</td>
                 <td>
-                  <button className="btn">Watch</button>
+                  <form action={toWatchList}>
+                    <input type="hidden" name="id" value={stock._id} />
+                    <button className="btn">Watch</button>
+                  </form>
                 </td>
                 <td>
                   <button className="btn">Edit</button>
