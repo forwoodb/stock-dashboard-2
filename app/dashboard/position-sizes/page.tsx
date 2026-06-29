@@ -36,15 +36,31 @@ const PositionsPage = async () => {
       <table className="table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Ticker</th>
+            <th>Time</th>
+            <th>Close</th>
+            <th>5D</th>
+            <th>10D</th>
+            <th>20D</th>
+            <th>50D</th>
+            <th>100D</th>
+            <th>200D</th>
             <th>AvgCost</th>
           </tr>
         </thead>
         <tbody>
-          {stocks.map((stock) => {
+          {merge.map((stock) => {
             return (
               <tr key={stock._id}>
                 <td>{stock.ticker}</td>
+                <td>{stock.Time}</td>
+                <td>{stock.Close}</td>
+                <td>{stock["5D"]}</td>
+                <td>{stock["10D"]}</td>
+                <td>{stock["20D"]}</td>
+                <td>{stock["50D"]}</td>
+                <td>{stock["100D"]}</td>
+                <td>{stock["200D"]}</td>
                 <td>{stock.averageCost}</td>
                 <td>
                   <form action={toWatchList}>
