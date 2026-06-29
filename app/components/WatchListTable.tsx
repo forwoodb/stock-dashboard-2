@@ -43,6 +43,9 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
                   </button>
                 </form>
               </td>
+              <td>
+                <button className="btn">Edit</button>
+              </td>
             </tr>
           );
         })}

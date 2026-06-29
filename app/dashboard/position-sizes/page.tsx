@@ -26,7 +26,7 @@ const PositionsPage = async () => {
   return (
     <main>
       <h1>Position Sizes Page</h1>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Name</th>
@@ -41,6 +41,9 @@ const PositionsPage = async () => {
                 <td>{stock.averageCost}</td>
                 <td>
                   <button className="btn">Watch</button>
+                </td>
+                <td>
+                  <button className="btn">Edit</button>
                 </td>
               </tr>
             );
