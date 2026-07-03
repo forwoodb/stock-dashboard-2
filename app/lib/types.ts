@@ -32,4 +32,6 @@ export interface StockInfoType {
   "50D"?: number;
   "100D"?: number;
   "200D"?: number;
+  averageCost: number;
+  positionSize: number;
 }

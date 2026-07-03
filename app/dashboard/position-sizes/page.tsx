@@ -2,6 +2,7 @@ import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
+import { StockInfoType, StockType } from "@/app/lib/types";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -9,7 +10,7 @@ const PositionsPage = async () => {
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
-  const merge = mergeCSVData(stocks);
+  const merge = mergeCSVData(stocks) as StockInfoType[];
 
   const toWatchList = async (formData: FormData) => {
     "use server";
