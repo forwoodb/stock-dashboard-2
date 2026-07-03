@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
 import Link from "next/link";
+import AccountBalanceForm from "@/app/components/AccountBalanceForm";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -29,6 +30,7 @@ const PositionsPage = async () => {
   return (
     <main>
       <h1>Position Sizes Page</h1>
+      <AccountBalanceForm />
       <table className="table">
         <thead>
           <tr>

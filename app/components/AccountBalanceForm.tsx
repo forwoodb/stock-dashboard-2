@@ -1,9 +1,17 @@
-import React from "react";
-
 const AccountBalanceForm = () => {
   return (
     <div>
-      <h1>Account Balance</h1>
+      <form action="">
+        <label className="floating-label">
+          <span>Account Balance</span>
+          <input
+            type="text"
+            placeholder="Account Balance"
+            className="input input-md"
+          />
+        </label>
+        <button className="btn">Update Account Balance</button>
+      </form>
     </div>
   );
 };
