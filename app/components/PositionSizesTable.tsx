@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { StockInfoType } from "../lib/types";
 
-const PositionSizesTable = ({ data, serverAction }) => {
+interface TableProps {
+  data: StockInfoType[];
+  serverAction: (formData: FormData) => Promise<void>;
+}
+
+const PositionSizesTable = ({ data, serverAction }: TableProps) => {
   return (
     <table className="table">
       <thead>
