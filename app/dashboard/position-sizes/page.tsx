@@ -35,6 +35,7 @@ const PositionsPage = async () => {
             <th>100D</th>
             <th>200D</th>
             <th>AvgCost</th>
+            <th>PosSize</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +52,7 @@ const PositionsPage = async () => {
                 <td>{stock["100D"]}</td>
                 <td>{stock["200D"]}</td>
                 <td>{stock.averageCost}</td>
+                <td>{stock.positionSize}</td>
                 <td>
                   <form action={toWatchList}>
                     <input type="hidden" name="id" value={stock._id} />
