@@ -1,5 +1,6 @@
 import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
+import { redirect } from "next/navigation";
 
 type EditPageProps = {
   params: Promise<{ id: string }>;
@@ -15,7 +16,11 @@ const EditStockPage = async ({ params }: EditPageProps) => {
 
   const updateStockAction = async (formData: FormData) => {
     "use server";
-    console.log(formData);
+    const data = Object.fromEntries(formData);
+
+    await Stock.findByIdAndUpdate(id, data);
+
+    redirect("/dashboard/position-sizes");
   };
 
   return (
