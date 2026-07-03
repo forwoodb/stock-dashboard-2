@@ -13,17 +13,24 @@ const EditStockPage = async ({ params }: EditPageProps) => {
   const data = await Stock.findOne({ _id: id }).lean();
   const stock = JSON.parse(JSON.stringify(data));
 
-  console.log(stock);
+  const updateStockAction = async (formData: FormData) => {
+    "use server";
+    console.log(formData);
+  };
 
   return (
     <main>
       <h1>Edit Stock Page</h1>
-      <form action="" className="w-[50%] mx-auto border border-black">
+      <form
+        action={updateStockAction}
+        className="w-[50%] mx-auto border border-black"
+      >
         <label className="floating-label">
           <span>Ticker</span>
           <input
             type="text"
             placeholder="Ticker"
+            name="ticker"
             defaultValue={stock.ticker}
             className="input input-md"
           />
@@ -33,6 +40,7 @@ const EditStockPage = async ({ params }: EditPageProps) => {
           <input
             type="text"
             placeholder="Company"
+            name="company"
             defaultValue={stock.company}
             className="input input-md"
           />
@@ -42,6 +50,7 @@ const EditStockPage = async ({ params }: EditPageProps) => {
           <input
             type="text"
             placeholder="Position Size"
+            name="positionSize"
             defaultValue={stock.positionSize}
             className="input input-md"
           />
@@ -51,6 +60,7 @@ const EditStockPage = async ({ params }: EditPageProps) => {
           <input
             type="text"
             placeholder="Average Cost"
+            name="averageCost"
             defaultValue={stock.averageCost}
             className="input input-md"
           />
