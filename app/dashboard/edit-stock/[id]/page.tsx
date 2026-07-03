@@ -18,20 +18,31 @@ const EditStockPage = async ({ params }: EditPageProps) => {
   return (
     <main>
       <h1>Edit Stock Page</h1>
-      <form action="">
+      <form action="" className="w-[50%] mx-auto border border-black">
         <label className="floating-label">
           <span>Ticker</span>
-          <input type="text" placeholder="Ticker" className="input input-md" />
+          <input
+            type="text"
+            placeholder="Ticker"
+            defaultValue={stock.ticker}
+            className="input input-md"
+          />
         </label>
         <label className="floating-label">
           <span>Company</span>
-          <input type="text" placeholder="Company" className="input input-md" />
+          <input
+            type="text"
+            placeholder="Company"
+            defaultValue={stock.company}
+            className="input input-md"
+          />
         </label>
         <label className="floating-label">
           <span>Position Size</span>
           <input
             type="text"
             placeholder="Position Size"
+            defaultValue={stock.positionSize}
             className="input input-md"
           />
         </label>
@@ -40,11 +51,11 @@ const EditStockPage = async ({ params }: EditPageProps) => {
           <input
             type="text"
             placeholder="Average Cost"
+            defaultValue={stock.averageCost}
             className="input input-md"
           />
         </label>
-        <input type="text" />
-        <button>Update</button>
+        <button className="btn">Update</button>
       </form>
     </main>
   );
