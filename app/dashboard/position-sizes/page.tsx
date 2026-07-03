@@ -3,6 +3,7 @@ import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
+import Link from "next/link";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -61,7 +62,12 @@ const PositionsPage = async () => {
                   </form>
                 </td>
                 <td>
-                  <button className="btn">Edit</button>
+                  <Link
+                    href={`/dashboard/edit-stock/${stock._id}`}
+                    className="btn"
+                  >
+                    Edit
+                  </Link>
                 </td>
               </tr>
             );
