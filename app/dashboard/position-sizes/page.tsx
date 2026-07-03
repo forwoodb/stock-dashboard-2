@@ -17,7 +17,12 @@ const PositionsPage = async () => {
     "use server";
     const id = formData.get("id");
 
-    await Stock.findByIdAndUpdate(id, { watchList: true, position: false });
+    await Stock.findByIdAndUpdate(id, {
+      positionSize: 0,
+      averageCost: 0,
+      watchList: true,
+      position: false,
+    });
     revalidatePath("/dashboard/position-sizes");
   };
 
