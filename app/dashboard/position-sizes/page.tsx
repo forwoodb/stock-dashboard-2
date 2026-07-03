@@ -5,6 +5,7 @@ import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
 import Link from "next/link";
 import AccountBalanceForm from "@/app/components/AccountBalanceForm";
+import StopLossForm from "@/app/components/StopLossForm";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -31,6 +32,7 @@ const PositionsPage = async () => {
     <main>
       <h1>Position Sizes Page</h1>
       <AccountBalanceForm />
+      <StopLossForm />
       <table className="table">
         <thead>
           <tr>
