@@ -33,8 +33,8 @@ const PositionsPage = async () => {
     <main>
       <div className="container-main w-[95%] m-auto">
         <h1>Position Sizes Page</h1>
-        <div className="info-container flex justify-between border border-black">
-          <div className="forms-wrapper w-[50%]">
+        <div className="info-container flex justify-between">
+          <div className="forms-wrapper flex flex-col justify-between w-[50%]">
             <AccountBalanceForm />
             <StopLossForm />
           </div>

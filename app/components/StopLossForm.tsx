@@ -2,7 +2,7 @@ import React from "react";
 
 const StopLossForm = () => {
   return (
-    <form>
+    <form className="p-3 mb-3 md:mr-3 bg-white rounded border border-gray-300">
       <label className="floating-label">
         <span>Stop-Loss %</span>
         <input

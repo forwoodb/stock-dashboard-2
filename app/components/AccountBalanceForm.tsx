@@ -1,7 +1,10 @@
 const AccountBalanceForm = () => {
   return (
     <div>
-      <form action="">
+      <form
+        action=""
+        className="p-3 mb-3 md:mr-3 bg-white rounded border border-gray-300"
+      >
         <label className="floating-label">
           <span>Account Balance</span>
           <input
