@@ -1,5 +1,3 @@
-import Button from "./Button";
-
 const AccountPositions = ({
   accBal,
   numPos,
@@ -8,6 +6,18 @@ const AccountPositions = ({
   maxPos,
   click,
 }) => {
+  const accBal = localStorage.getItem("accountBalance");
+  // setAccountBalance(accBal);
+
+  const stopLoss = localStorage.getItem("stopLoss");
+  // setStopLoss(stopLoss);
+
+  const avgAmt = Number(accountBalance) / Number(stocks.length);
+  const avgPos = avgAmt.toFixed(2);
+  const maxAmt = Number(stopLoss) * Number(avgPos);
+  const maxPos = maxAmt.toFixed(2);
+  const stopLossDecimal = stopLoss / 100;
+
   const runPython = () => {
     fetch("/api/dashboard/run-python");
   };
@@ -30,9 +40,9 @@ const AccountPositions = ({
         <p className="card-text">
           Maximum Position Size: $<span id="max-pos-size">{maxPos}</span>
         </p>
-        <Button click={runPython} className="bg-green-700 text-white">
+        <button click={runPython} className="bg-green-700 text-white">
           Update Prices
-        </Button>
+        </button>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { StockInfoType, StockType } from "@/app/lib/types";
 import AccountBalanceForm from "@/app/components/AccountBalanceForm";
 import StopLossForm from "@/app/components/StopLossForm";
 import PositionSizesTable from "@/app/components/PositionSizesTable";
+import AccountPositions from "@/app/components/AccountPositions";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -33,6 +34,7 @@ const PositionsPage = async () => {
       <h1>Position Sizes Page</h1>
       <AccountBalanceForm />
       <StopLossForm />
+      <AccountPositions />
       <PositionSizesTable data={merge} serverAction={toWatchList} />
     </main>
   );
