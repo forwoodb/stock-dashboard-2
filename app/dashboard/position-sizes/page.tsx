@@ -31,11 +31,17 @@ const PositionsPage = async () => {
 
   return (
     <main>
-      <h1>Position Sizes Page</h1>
-      <AccountBalanceForm />
-      <StopLossForm />
-      <AccountPositions stocks={stocks} />
-      <PositionSizesTable data={merge} serverAction={toWatchList} />
+      <div className="container-main w-[95%] m-auto">
+        <h1>Position Sizes Page</h1>
+        <div className="info-container flex justify-between border border-black">
+          <div className="forms-wrapper w-[50%]">
+            <AccountBalanceForm />
+            <StopLossForm />
+          </div>
+          <AccountPositions stocks={stocks} />
+        </div>
+        <PositionSizesTable data={merge} serverAction={toWatchList} />
+      </div>
     </main>
   );
 };

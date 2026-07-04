@@ -1,3 +1,4 @@
+"use client";
 import { StockType } from "../lib/types";
 
 interface AccountPositionsProps {
@@ -39,7 +40,8 @@ const AccountPositions = ({ stocks }: AccountPositionsProps) => {
         <p className="card-text">
           Maximum Position Size: $<span id="max-pos-size">{maxPos}</span>
         </p>
-        <button onClick={runPython} className="bg-green-700 text-white">
+        {/* <button onClick={runPython} className="bg-green-700 text-white"> */}
+        <button onClick={runPython} className="btn">
           Update Prices
         </button>
       </div>
