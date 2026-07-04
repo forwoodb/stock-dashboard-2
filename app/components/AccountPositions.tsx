@@ -1,22 +1,21 @@
-const AccountPositions = ({
-  accBal,
-  numPos,
-  avgPos,
-  stopLoss,
-  maxPos,
-  click,
-}) => {
-  const accBal = localStorage.getItem("accountBalance");
+import { StockType } from "../lib/types";
+
+interface AccountPositionsProps {
+  stocks: StockType[];
+}
+const AccountPositions = ({ stocks }: AccountPositionsProps) => {
+  const accBal = localStorage.getItem("accBal");
   // setAccountBalance(accBal);
 
   const stopLoss = localStorage.getItem("stopLoss");
   // setStopLoss(stopLoss);
 
-  const avgAmt = Number(accountBalance) / Number(stocks.length);
+  const numPos = stocks.length;
+  const avgAmt = Number(accBal) / Number(stocks.length);
   const avgPos = avgAmt.toFixed(2);
   const maxAmt = Number(stopLoss) * Number(avgPos);
   const maxPos = maxAmt.toFixed(2);
-  const stopLossDecimal = stopLoss / 100;
+  // const stopLossDecimal = stopLoss / 100;
 
   const runPython = () => {
     fetch("/api/dashboard/run-python");
@@ -40,7 +39,7 @@ const AccountPositions = ({
         <p className="card-text">
           Maximum Position Size: $<span id="max-pos-size">{maxPos}</span>
         </p>
-        <button click={runPython} className="bg-green-700 text-white">
+        <button onClick={runPython} className="bg-green-700 text-white">
           Update Prices
         </button>
       </div>

@@ -34,7 +34,7 @@ const PositionsPage = async () => {
       <h1>Position Sizes Page</h1>
       <AccountBalanceForm />
       <StopLossForm />
-      <AccountPositions />
+      <AccountPositions stocks={stocks} />
       <PositionSizesTable data={merge} serverAction={toWatchList} />
     </main>
   );
