@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
 import AccountBalanceForm from "./AccountBalanceForm";
+import AccountPositions from "./AccountPositions";
+import StopLossForm from "./StopLossForm";
 
-const PositionsInterface = () => {
+const PositionsInterface = ({ stocks }) => {
   const [accBal, setAccBal] = useState("");
 
   const updateAccBal = (e) => {
@@ -16,11 +18,13 @@ const PositionsInterface = () => {
   };
   return (
     <>
-      <AccountBalanceForm
-        submit={updateAccBal}
-        accBal={accBal}
-        change={handleAccBalChange}
-      />
+      <div className="info-container flex justify-between">
+        <div className="forms-wrapper flex flex-col justify-between w-[50%]">
+          <AccountBalanceForm />
+          <StopLossForm />
+        </div>
+        <AccountPositions stocks={stocks} />
+      </div>
     </>
   );
 };
