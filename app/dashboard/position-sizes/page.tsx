@@ -3,10 +3,10 @@ import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
-import AccountBalanceForm from "@/app/components/AccountBalanceForm";
 import StopLossForm from "@/app/components/StopLossForm";
 import PositionSizesTable from "@/app/components/PositionSizesTable";
 import AccountPositions from "@/app/components/AccountPositions";
+import PositionsInterface from "@/app/components/PositionsInterface";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -35,7 +35,7 @@ const PositionsPage = async () => {
         <h1>Position Sizes Page</h1>
         <div className="info-container flex justify-between">
           <div className="forms-wrapper flex flex-col justify-between w-[50%]">
-            <AccountBalanceForm />
+            <PositionsInterface />
             <StopLossForm />
           </div>
           <AccountPositions stocks={stocks} />
