@@ -20,7 +20,11 @@ const PositionsInterface = ({ stocks }) => {
     <>
       <div className="info-container flex justify-between">
         <div className="forms-wrapper flex flex-col justify-between w-[50%]">
-          <AccountBalanceForm />
+          <AccountBalanceForm
+            accBal={accBal}
+            submit={updateAccBal}
+            change={handleAccBalChange}
+          />
           <StopLossForm />
         </div>
         <AccountPositions stocks={stocks} />
