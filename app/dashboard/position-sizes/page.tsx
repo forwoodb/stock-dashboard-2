@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
 import PositionSizesTable from "@/app/components/PositionSizesTable";
-import PositionsInterface from "@/app/components/PositionsInterface";
 import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -60,8 +59,8 @@ const PositionsPage = async () => {
         <h1>Position Sizes Page</h1>
         <div className="info-container flex justify-between">
           <div className="forms-wrapper flex flex-col justify-between w-[50%]">
-            <AccountBalanceForm />
-            <StopLossForm value={updateStopLoss} />
+            <AccountBalanceForm user={user} />
+            <StopLossForm />
           </div>
           <AccountPositions stocks={stocks} accBal={balance} />
         </div>
