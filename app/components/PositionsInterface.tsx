@@ -1,11 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountBalanceForm from "./AccountBalanceForm";
 import AccountPositions from "./AccountPositions";
 import StopLossForm from "./StopLossForm";
 
 const PositionsInterface = ({ stocks }) => {
-  const [accBal, setAccBal] = useState("");
+  const [accountBalance, setAccountBalance] = useState("");
+
+  useEffect(() => {
+    const accBal = localStorage.getItem("accountBalance");
+    setAccountBalance(accBal);
+    console.log(accountBalance);
+  });
 
   const updateAccBal = (e) => {
     e.preventDefault();
@@ -14,20 +20,20 @@ const PositionsInterface = ({ stocks }) => {
   };
 
   const handleAccBalChange = (e) => {
-    setAccBal(e.target.value);
+    setAccountBalance(e.target.value);
   };
   return (
     <>
       <div className="info-container flex justify-between">
         <div className="forms-wrapper flex flex-col justify-between w-[50%]">
           <AccountBalanceForm
-            accBal={accBal}
+            accBal={accountBalance}
             submit={updateAccBal}
             change={handleAccBalChange}
           />
           <StopLossForm />
         </div>
-        <AccountPositions stocks={stocks} />
+        <AccountPositions stocks={stocks} accBal={accountBalance} />
       </div>
     </>
   );

@@ -1,11 +1,13 @@
 "use client";
 import { StockType } from "../lib/types";
 
-interface AccountPositionsProps {
-  stocks: StockType[];
-}
-const AccountPositions = ({ stocks }: AccountPositionsProps) => {
-  const accBal = localStorage.getItem("accBal");
+// interface AccountPositionsProps {
+//   stocks: StockType[];
+// }
+
+// const AccountPositions = ({ stocks, accBal }: AccountPositionsProps) => {
+const AccountPositions = ({ stocks, accBal }) => {
+  // const accBal = localStorage.getItem("accBal");
   // setAccountBalance(accBal);
 
   const stopLoss = localStorage.getItem("stopLoss");
