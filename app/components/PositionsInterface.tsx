@@ -22,6 +22,7 @@ const PositionsInterface = ({ stocks }) => {
     e.preventDefault();
     localStorage.setItem("accountBalance", updateAccountBalance);
     setAccountBalance(updateAccountBalance);
+    setUpdateAccountBalance("");
   };
 
   const handleAccBalChange = (e) => {
