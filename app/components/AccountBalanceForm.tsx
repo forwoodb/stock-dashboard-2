@@ -1,10 +1,8 @@
-"use client";
-
-const AccountBalanceForm = ({ submit, value, change }) => {
+const AccountBalanceForm = () => {
   return (
     <div>
       <form
-        onSubmit={submit}
+        action=""
         className="p-3 mb-3 md:mr-3 bg-white rounded border border-gray-300"
       >
         <label className="floating-label">
@@ -12,8 +10,6 @@ const AccountBalanceForm = ({ submit, value, change }) => {
           <input
             type="text"
             name="accountBalance"
-            value={value}
-            onChange={change}
             placeholder="Account Balance"
             className="input input-md"
           />

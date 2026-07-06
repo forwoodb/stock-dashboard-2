@@ -9,6 +9,9 @@ import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { User } from "@/app/models/User";
+import AccountBalanceForm from "@/app/components/AccountBalanceForm";
+import StopLossForm from "@/app/components/StopLossForm";
+import AccountPositions from "@/app/components/AccountPositions";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -57,11 +60,7 @@ const PositionsPage = async () => {
         <h1>Position Sizes Page</h1>
         <div className="info-container flex justify-between">
           <div className="forms-wrapper flex flex-col justify-between w-[50%]">
-            <AccountBalanceForm
-            // value={updateAccountBalance}
-            // change={handleAccBalChange}
-            // submit={updateAccBal}
-            />
+            <AccountBalanceForm />
             <StopLossForm value={updateStopLoss} />
           </div>
           <AccountPositions stocks={stocks} accBal={balance} />
