@@ -20,20 +20,20 @@ const RegisterPage = () => {
 
     console.log(name, email, password);
 
-    try {
-      await auth.api.signUpEmail({
-        body: {
-          name,
-          email,
-          password,
-        },
-      });
-    } catch (error) {
-      const err = error as Error;
-      return { message: err.message };
-    }
+    // try {
+    //   await auth.api.signUpEmail({
+    //     body: {
+    //       name,
+    //       email,
+    //       password,
+    //     },
+    //   });
+    // } catch (error) {
+    //   const err = error as Error;
+    //   return { message: err.message };
+    // }
 
-    redirect("/protected-route");
+    // redirect("/protected-route");
   };
 
   // const registerGoogleAction = async () => {
@@ -52,7 +52,7 @@ const RegisterPage = () => {
   return (
     <>
       <h1>Register Page</h1>
-      <AuthForm mode="register" emailAction={registerEmailAction} />
+      <AuthForm mode="register" formAction={registerEmailAction} />
     </>
   );
 };

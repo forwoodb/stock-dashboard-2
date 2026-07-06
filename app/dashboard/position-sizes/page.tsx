@@ -5,9 +5,27 @@ import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
 import PositionSizesTable from "@/app/components/PositionSizesTable";
 import PositionsInterface from "@/app/components/PositionsInterface";
+import { auth } from "@/app/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { User } from "@/app/models/User";
 
 const PositionsPage = async () => {
   await connectDb();
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/auth/login");
+  }
+
+  const userId = session.user.id;
+
+  const user = await User.findOne({ _id: userId });
+
+  console.log(user.banned);
 
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));

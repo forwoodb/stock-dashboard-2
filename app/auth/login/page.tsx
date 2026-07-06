@@ -12,19 +12,21 @@ const LoginPage = () => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    try {
-      await auth.api.signInEmail({
-        body: {
-          email,
-          password,
-        },
-      });
-    } catch (error) {
-      const err = error as Error;
-      return { message: err.message };
-    }
+    console.log(email, password);
 
-    redirect("/protected-route");
+    // try {
+    //   await auth.api.signInEmail({
+    //     body: {
+    //       email,
+    //       password,
+    //     },
+    //   });
+    // } catch (error) {
+    //   const err = error as Error;
+    //   return { message: err.message };
+    // }
+
+    // redirect("/protected-route");
   };
   return (
     <>

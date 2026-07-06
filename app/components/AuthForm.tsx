@@ -15,6 +15,8 @@ interface AuthFormTypes {
 const AuthForm = ({ mode, formAction }: AuthFormTypes) => {
   const [state, action] = useActionState(formAction, { message: null });
 
+  console.log(action);
+
   return (
     <div className="flex flex-col items-center">
       {state?.message && <p className="text-red-500">{state.message}</p>}
