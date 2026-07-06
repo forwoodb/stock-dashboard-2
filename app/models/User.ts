@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
     default: "user",
   },
   banned: Boolean,
+  accountBalance: String,
 });
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
