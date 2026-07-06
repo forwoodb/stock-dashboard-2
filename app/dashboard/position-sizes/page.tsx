@@ -25,7 +25,13 @@ const PositionsPage = async () => {
 
   const user = await User.findOne({ _id: userId });
 
-  console.log(user.banned);
+  const balance = user.accountBalance;
+
+  if (!balance) {
+    await User.findByIdAndUpdate(userId, { accountBalance: 0 });
+  }
+
+  console.log(balance);
 
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));

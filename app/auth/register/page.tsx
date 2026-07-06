@@ -3,8 +3,6 @@ import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import { redirect } from "next/navigation";
 import { LoginState } from "@/app/lib/types";
-import { headers } from "next/headers";
-import { loginGoogleAction } from "@/app/lib/actions";
 
 const RegisterPage = () => {
   const registerEmailAction = async (
