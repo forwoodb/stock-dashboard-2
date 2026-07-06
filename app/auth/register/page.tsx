@@ -18,22 +18,21 @@ const RegisterPage = () => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    console.log(name, email, password);
+    try {
+      await auth.api.signUpEmail({
+        body: {
+          name,
+          email,
+          password,
+          accountBalance: "0",
+        },
+      });
+    } catch (error) {
+      const err = error as Error;
+      return { message: err.message };
+    }
 
-    // try {
-    //   await auth.api.signUpEmail({
-    //     body: {
-    //       name,
-    //       email,
-    //       password,
-    //     },
-    //   });
-    // } catch (error) {
-    //   const err = error as Error;
-    //   return { message: err.message };
-    // }
-
-    // redirect("/protected-route");
+    redirect("/");
   };
 
   // const registerGoogleAction = async () => {

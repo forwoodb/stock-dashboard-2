@@ -22,8 +22,10 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
   },
-  additionalFields: {
-    accountBalance: String,
+  user: {
+    additionalFields: {
+      accountBalance: { type: "string" },
+    },
   },
   plugins: [admin(), nextCookies()],
 });

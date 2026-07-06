@@ -14,19 +14,19 @@ const LoginPage = () => {
 
     console.log(email, password);
 
-    // try {
-    //   await auth.api.signInEmail({
-    //     body: {
-    //       email,
-    //       password,
-    //     },
-    //   });
-    // } catch (error) {
-    //   const err = error as Error;
-    //   return { message: err.message };
-    // }
+    try {
+      await auth.api.signInEmail({
+        body: {
+          email,
+          password,
+        },
+      });
+    } catch (error) {
+      const err = error as Error;
+      return { message: err.message };
+    }
 
-    // redirect("/protected-route");
+    redirect("/protected-route");
   };
   return (
     <>
