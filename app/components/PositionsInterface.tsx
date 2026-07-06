@@ -21,12 +21,11 @@ const PositionsInterface = ({ stocks }) => {
   const updateAccBal = (e) => {
     e.preventDefault();
     localStorage.setItem("accountBalance", updateAccountBalance);
-    // e.target.value = "";
-    console.log(updateAccountBalance);
+    setAccountBalance(updateAccountBalance);
   };
 
   const handleAccBalChange = (e) => {
-    setAccountBalance(e.target.value);
+    return setUpdateAccountBalance(e.target.value);
   };
   return (
     <>
@@ -39,7 +38,7 @@ const PositionsInterface = ({ stocks }) => {
           />
           <StopLossForm />
         </div>
-        <AccountPositions stocks={stocks} value={accountBalance} />
+        <AccountPositions stocks={stocks} accBal={accountBalance} />
       </div>
     </>
   );
