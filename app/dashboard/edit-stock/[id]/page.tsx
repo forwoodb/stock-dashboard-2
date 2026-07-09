@@ -28,7 +28,7 @@ const EditStockPage = async ({ params }: EditPageProps) => {
       <h1>Edit Stock Page</h1>
       <form
         action={updateStockAction}
-        className="w-[50%] mx-auto border border-black"
+        className="flex flex-col items-center w-[50%] mx-auto "
       >
         <label className="floating-label">
           <span>Ticker</span>
