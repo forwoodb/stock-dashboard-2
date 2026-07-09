@@ -1,18 +1,17 @@
 "use client";
 import { StockType } from "../lib/types";
 
-// interface AccountPositionsProps {
-//   stocks: StockType[];
-// }
+interface AccountPositionsProps {
+  stocks: StockType[];
+  accBal: string;
+  stopLoss: string;
+}
 
-// const AccountPositions = ({ stocks, accBal }: AccountPositionsProps) => {
-const AccountPositions = ({ stocks, accBal, stopLoss }) => {
-  // const accBal = localStorage.getItem("accBal");
-  // setAccountBalance(accBal);
-
-  // const stopLoss = localStorage.getItem("stopLoss");
-  // setStopLoss(stopLoss);
-
+const AccountPositions = ({
+  stocks,
+  accBal,
+  stopLoss,
+}: AccountPositionsProps) => {
   const numPos = stocks.length;
   const avgAmt = Number(accBal) / Number(stocks.length);
   const avgPos = avgAmt.toFixed(2);
@@ -42,7 +41,6 @@ const AccountPositions = ({ stocks, accBal, stopLoss }) => {
         <p className="card-text">
           Maximum Position Size: $<span id="max-pos-size">{maxPos}</span>
         </p>
-        {/* <button onClick={runPython} className="bg-green-700 text-white"> */}
         <button onClick={runPython} className="btn">
           Update Prices
         </button>
