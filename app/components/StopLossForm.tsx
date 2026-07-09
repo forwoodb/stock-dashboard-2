@@ -1,9 +1,12 @@
 import { revalidatePath } from "next/cache";
 import { User } from "../models/User";
+import { connectDb } from "../lib/mongodb";
 
 const StopLossForm = ({ user }) => {
   const updateStopLoss = async (formData: FormData) => {
     "use server";
+    await connectDb();
+
     const stop = formData.get("stopLoss");
     console.log(stop);
 

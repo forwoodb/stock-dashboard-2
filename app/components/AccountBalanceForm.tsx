@@ -1,13 +1,15 @@
 import { revalidatePath } from "next/cache";
 import { User } from "../models/User";
+import { connectDb } from "../lib/mongodb";
 
 const AccountBalanceForm = ({ user }) => {
   const updateBalance = async (formData: FormData) => {
     "use server";
+    await connectDb();
 
     const balance = formData.get("accountBalance");
 
-    await User.findByIdAndUpdate(user.id, { accountBalance: balance }); // should be user._id, but is still working for some reason
+    await User.findByIdAndUpdate(user._id, { accountBalance: balance }); // should be user._id, but is still working for some reason
 
     revalidatePath("/dashboard/position-sizes");
   };

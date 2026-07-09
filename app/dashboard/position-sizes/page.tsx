@@ -25,25 +25,12 @@ const PositionsPage = async () => {
 
   const userId = session.user.id;
 
-  const user = await User.findOne({ _id: userId });
+  const userData = await User.findOne({ _id: userId }).lean();
+  const user = JSON.parse(JSON.stringify(userData));
 
   const balance = user.accountBalance;
 
-  // if (!balance) {
-  //   // await User.findByIdAndUpdate(userId, { accountBalance: 0 });
-  //   console.log("no bal");
-  // } else {
-  //   console.log("yes bal");
-  // }
-
   const stop = user.stopLoss;
-
-  // if (!stop) {
-  //   // await User.findByIdAndUpdate(userId, { stopLoss: 0 });
-  //   console.log("no sl");
-  // }
-
-  console.log(stop);
 
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
