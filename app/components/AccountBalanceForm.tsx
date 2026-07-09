@@ -7,7 +7,7 @@ const AccountBalanceForm = ({ user }) => {
 
     const balance = formData.get("accountBalance");
 
-    await User.findByIdAndUpdate(user.id, { accountBalance: balance });
+    await User.findByIdAndUpdate(user.id, { accountBalance: balance }); // should be user._id, but is still working for some reason
 
     revalidatePath("/dashboard/position-sizes");
   };

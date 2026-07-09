@@ -30,14 +30,18 @@ const PositionsPage = async () => {
   const balance = user.accountBalance;
 
   // if (!balance) {
-  //   await User.findByIdAndUpdate(userId, { accountBalance: 0 });
+  //   // await User.findByIdAndUpdate(userId, { accountBalance: 0 });
+  //   console.log("no bal");
+  // } else {
+  //   console.log("yes bal");
   // }
 
   const stop = user.stopLoss;
 
-  if (!stop) {
-    await User.findByIdAndUpdate(userId, { stopLoss: 0 });
-  }
+  // if (!stop) {
+  //   // await User.findByIdAndUpdate(userId, { stopLoss: 0 });
+  //   console.log("no sl");
+  // }
 
   console.log(stop);
 
@@ -66,7 +70,7 @@ const PositionsPage = async () => {
         <div className="info-container flex justify-between">
           <div className="forms-wrapper flex flex-col justify-between w-[50%]">
             <AccountBalanceForm user={user} />
-            <StopLossForm />
+            <StopLossForm user={user} />
           </div>
           <AccountPositions stocks={stocks} accBal={balance} stopLoss={stop} />
         </div>
