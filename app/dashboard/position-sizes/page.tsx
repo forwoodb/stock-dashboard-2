@@ -29,11 +29,17 @@ const PositionsPage = async () => {
 
   const balance = user.accountBalance;
 
-  if (!balance) {
-    await User.findByIdAndUpdate(userId, { accountBalance: 0 });
+  // if (!balance) {
+  //   await User.findByIdAndUpdate(userId, { accountBalance: 0 });
+  // }
+
+  const stop = user.stopLoss;
+
+  if (!stop) {
+    await User.findByIdAndUpdate(userId, { stopLoss: 0 });
   }
 
-  console.log(balance);
+  console.log(stop);
 
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
@@ -62,7 +68,7 @@ const PositionsPage = async () => {
             <AccountBalanceForm user={user} />
             <StopLossForm />
           </div>
-          <AccountPositions stocks={stocks} accBal={balance} />
+          <AccountPositions stocks={stocks} accBal={balance} stopLoss={stop} />
         </div>
         <PositionSizesTable data={merge} serverAction={toWatchList} />
       </div>

@@ -6,11 +6,11 @@ import { StockType } from "../lib/types";
 // }
 
 // const AccountPositions = ({ stocks, accBal }: AccountPositionsProps) => {
-const AccountPositions = ({ stocks, accBal }) => {
+const AccountPositions = ({ stocks, accBal, stopLoss }) => {
   // const accBal = localStorage.getItem("accBal");
   // setAccountBalance(accBal);
 
-  const stopLoss = localStorage.getItem("stopLoss");
+  // const stopLoss = localStorage.getItem("stopLoss");
   // setStopLoss(stopLoss);
 
   const numPos = stocks.length;

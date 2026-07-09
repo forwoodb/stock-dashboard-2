@@ -25,6 +25,7 @@ export const auth = betterAuth({
   user: {
     additionalFields: {
       accountBalance: { type: "string" },
+      stopLoss: { type: "string" },
     },
   },
   plugins: [admin(), nextCookies()],

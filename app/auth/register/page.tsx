@@ -23,6 +23,7 @@ const RegisterPage = () => {
           email,
           password,
           accountBalance: "0",
+          stopLoss: "0",
         },
       });
     } catch (error) {
