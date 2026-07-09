@@ -1,0 +1,15 @@
+{
+  "folders": [
+	{
+		"name": "JavaScript",
+		"path": "../../../../.."
+	},
+	{
+		"path": "../../../../../../Python"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "CurrentPortfolio",
+    "postman.settings.dotenv-detection-notification-visibility": false
+  }
+}
