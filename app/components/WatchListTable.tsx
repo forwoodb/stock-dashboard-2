@@ -12,6 +12,7 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
 
   const selectMA = (ma) => {
+    setSelectedMA(ma);
     console.log(ma);
   };
 
@@ -22,12 +23,24 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
           <th>Ticker</th>
           <th>Time</th>
           <th>Close</th>
-          <th onClick={() => selectMA("5D")}>5D</th>
-          <th onClick={() => selectMA("10D")}>10D</th>
-          <th onClick={() => selectMA("20D")}>20D</th>
-          <th onClick={() => selectMA("50D")}>50D</th>
-          <th onClick={() => selectMA("100D")}>100D</th>
-          <th onClick={() => selectMA("200D")}>200D</th>
+          <th onClick={() => selectMA("5D")} className="cursor-pointer">
+            5D
+          </th>
+          <th onClick={() => selectMA("10D")} className="cursor-pointer">
+            10D
+          </th>
+          <th onClick={() => selectMA("20D")} className="cursor-pointer">
+            20D
+          </th>
+          <th onClick={() => selectMA("50D")} className="cursor-pointer">
+            50D
+          </th>
+          <th onClick={() => selectMA("100D")} className="cursor-pointer">
+            100D
+          </th>
+          <th onClick={() => selectMA("200D")} className="cursor-pointer">
+            200D
+          </th>
           <th>Cl&gt;MA</th>
         </tr>
       </thead>
