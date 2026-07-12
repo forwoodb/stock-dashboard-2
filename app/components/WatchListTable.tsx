@@ -26,19 +26,25 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
       <tbody>
         {data.map((stock) => {
           const pctAbvMa = stock.Close - stock["10D"];
-
+          let textColor;
+          if (pctAbvMa < 0) {
+            textColor = "red";
+          }
           return (
             <tr key={stock._id}>
               <td>{stock.ticker}</td>
               <td>{stock.Time}</td>
-              <td>{stock.Close}</td>
+              <td className={pctAbvMa < 0 && `text-red-600`}>{stock.Close}</td>
               <td>{stock["5D"]}</td>
               <td>{stock["10D"]}</td>
               <td>{stock["20D"]}</td>
               <td>{stock["50D"]}</td>
               <td>{stock["100D"]}</td>
               <td>{stock["200D"]}</td>
-              <td>{pctAbvMa.toFixed(2)}%</td>
+              {/* <td className={pctAbvMa < 0 && `text-red`}> */}
+              <td className={pctAbvMa < 0 && `text-red-600`}>
+                {pctAbvMa.toFixed(2)}%
+              </td>
               <td>
                 <form action={formAction}>
                   <input type="hidden" name="id" value={stock._id} />
