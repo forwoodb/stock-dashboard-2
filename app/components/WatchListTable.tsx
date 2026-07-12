@@ -20,10 +20,13 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
           <th>50D</th>
           <th>100D</th>
           <th>200D</th>
+          <th>Cl&gt;MA</th>
         </tr>
       </thead>
       <tbody>
         {data.map((stock) => {
+          const pctAbvMa = stock.Close - stock["10D"];
+
           return (
             <tr key={stock._id}>
               <td>{stock.ticker}</td>
@@ -35,6 +38,7 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
               <td>{stock["50D"]}</td>
               <td>{stock["100D"]}</td>
               <td>{stock["200D"]}</td>
+              <td>{pctAbvMa.toFixed(2)}%</td>
               <td>
                 <form action={formAction}>
                   <input type="hidden" name="id" value={stock._id} />
