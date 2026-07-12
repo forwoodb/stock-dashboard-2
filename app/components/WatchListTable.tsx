@@ -11,8 +11,8 @@ interface WatchListProps {
 const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
 
-  const selectMA = (id) => {
-    console.log("click");
+  const selectMA = (ma) => {
+    console.log(ma);
   };
 
   return (
@@ -22,34 +22,19 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
           <th>Ticker</th>
           <th>Time</th>
           <th>Close</th>
-          <th id="5D" onClick={selectMA}>
-            5D
-          </th>
-          <th id="10D" onClick={selectMA}>
-            10D
-          </th>
-          <th id="20D" onClick={selectMA}>
-            20D
-          </th>
-          <th id="50D" onClick={selectMA}>
-            50D
-          </th>
-          <th id="100D" onClick={selectMA}>
-            100D
-          </th>
-          <th id="200D" onClick={selectMA}>
-            200D
-          </th>
+          <th onClick={() => selectMA("5D")}>5D</th>
+          <th onClick={() => selectMA("10D")}>10D</th>
+          <th onClick={() => selectMA("20D")}>20D</th>
+          <th onClick={() => selectMA("50D")}>50D</th>
+          <th onClick={() => selectMA("100D")}>100D</th>
+          <th onClick={() => selectMA("200D")}>200D</th>
           <th>Cl&gt;MA</th>
         </tr>
       </thead>
       <tbody>
         {data.map((stock) => {
-          const pctAbvMa = stock.Close - stock[selectedMA];
-          let textColor;
-          if (pctAbvMa < 0) {
-            textColor = "red";
-          }
+          const pctAbvMa = (stock.Close - stock[selectedMA]) as number;
+
           return (
             <tr key={stock._id} className={pctAbvMa < 0 && `text-red-600`}>
               <td>{stock.ticker}</td>
