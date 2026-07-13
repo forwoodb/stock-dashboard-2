@@ -55,13 +55,15 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
           >
             200D
           </th>
+          <th>Cl&gt;MA</th>
           <th>AvgCost</th>
           <th>PosSize</th>
         </tr>
       </thead>
       <tbody>
         {data.map((stock) => {
-          const pctAbvMA = stock.Close - stock[selectedMA];
+          const pctAbvMA =
+            ((stock.Close - stock[selectedMA]) / stock[selectedMA]) * 100;
           return (
             <tr key={stock._id} className={pctAbvMA < 0 && `text-red-500`}>
               <td>{stock.ticker}</td>
@@ -73,6 +75,7 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
               <td>{stock["50D"]}</td>
               <td>{stock["100D"]}</td>
               <td>{stock["200D"]}</td>
+              <td>{pctAbvMA.toFixed(2)}%</td>
               <td>{stock.averageCost}</td>
               <td>{stock.positionSize}</td>
               <td>
