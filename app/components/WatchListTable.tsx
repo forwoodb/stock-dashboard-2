@@ -78,6 +78,7 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
           .sort((a, b) => {
             const aPct = a.Close - a[selectedMA];
             const bPct = b.Close - b[selectedMA];
+
             if (sortColumn === "ticker") {
               return a.ticker.localeCompare(b.ticker);
             } else {
@@ -85,7 +86,9 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
             }
           })
           .map((stock) => {
-            const pctAbvMa = (stock.Close - stock[selectedMA]) as number;
+            const pctAbvMa = (((stock.Close - stock[selectedMA]) /
+              stock[selectedMA]) *
+              100) as number;
 
             return (
               <tr key={stock._id} className={pctAbvMa < 0 && `text-red-600`}>

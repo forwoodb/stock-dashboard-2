@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import { StockInfoType } from "../lib/types";
+import { useState } from "react";
 
 interface TableProps {
   data: StockInfoType[];
@@ -7,6 +9,12 @@ interface TableProps {
 }
 
 const PositionSizesTable = ({ data, serverAction }: TableProps) => {
+  const [selectedMA, setSelectedMA] = useState("10D");
+
+  const handleSelectMA = (ma) => {
+    setSelectedMA(ma);
+  };
+
   return (
     <table className="table">
       <thead>
@@ -14,20 +22,48 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
           <th>Ticker</th>
           <th>Time</th>
           <th>Close</th>
-          <th>5D</th>
-          <th>10D</th>
-          <th>20D</th>
-          <th>50D</th>
-          <th>100D</th>
-          <th>200D</th>
+          <th onClick={() => handleSelectMA("5D")} className={`cursor-pointer`}>
+            5D
+          </th>
+          <th
+            onClick={() => handleSelectMA("10D")}
+            className={`cursor-pointer`}
+          >
+            10D
+          </th>
+          <th
+            onClick={() => handleSelectMA("20D")}
+            className={`cursor-pointer`}
+          >
+            20D
+          </th>
+          <th
+            onClick={() => handleSelectMA("50D")}
+            className={`cursor-pointer`}
+          >
+            50D
+          </th>
+          <th
+            onClick={() => handleSelectMA("100D")}
+            className={`cursor-pointer`}
+          >
+            100D
+          </th>
+          <th
+            onClick={() => handleSelectMA("200D")}
+            className={`cursor-pointer`}
+          >
+            200D
+          </th>
           <th>AvgCost</th>
           <th>PosSize</th>
         </tr>
       </thead>
       <tbody>
         {data.map((stock) => {
+          const pctAbvMA = stock.Close - stock[selectedMA];
           return (
-            <tr key={stock._id}>
+            <tr key={stock._id} className={pctAbvMA < 0 && `text-red-500`}>
               <td>{stock.ticker}</td>
               <td>{stock.Time}</td>
               <td>{stock.Close}</td>
