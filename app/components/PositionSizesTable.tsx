@@ -79,8 +79,8 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
       <tbody>
         {data
           .sort((a, b) => {
-            const aPct = ((a.Close - a[selectedMA]) / a[selectedMA]) * 100;
-            const bPct = ((b.Close - b[selectedMA]) / b[selectedMA]) * 100;
+            const aPct = ((a.Close - a[selectedMA]) / a.Close) * 100;
+            const bPct = ((b.Close - b[selectedMA]) / b.Close) * 100;
             if (sortColumn === "ticker") {
               return a.ticker.localeCompare(b.ticker);
             } else {
@@ -89,7 +89,7 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
           })
           .map((stock) => {
             const pctAbvMA =
-              ((stock.Close - stock[selectedMA]) / stock[selectedMA]) * 100;
+              ((stock.Close - stock[selectedMA]) / stock.Close) * 100;
             return (
               <tr key={stock._id} className={pctAbvMA < 0 && `text-red-500`}>
                 <td>{stock.ticker}</td>
