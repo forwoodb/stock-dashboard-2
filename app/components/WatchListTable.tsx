@@ -12,11 +12,11 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
 
-  const handleSelectMA = (ma) => {
+  const handleSelectMA = (ma: string) => {
     setSelectedMA(ma);
   };
 
-  const handleSort = (col) => {
+  const handleSort = (col: string) => {
     setSortColumn(col);
   };
 
