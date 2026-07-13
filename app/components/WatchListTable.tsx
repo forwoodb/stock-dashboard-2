@@ -10,6 +10,7 @@ interface WatchListProps {
 
 const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
+  const [sortColumn, setSortColumn] = useState("ticker");
 
   const selectMA = (ma) => {
     setSelectedMA(ma);
@@ -23,22 +24,40 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
           <th>Ticker</th>
           <th>Time</th>
           <th>Close</th>
-          <th onClick={() => selectMA("5D")} className="cursor-pointer">
+          <th
+            onClick={() => selectMA("5D")}
+            className={`cursor-pointer ${selectedMA === "5D" && "border border-black"}`}
+          >
             5D
           </th>
-          <th onClick={() => selectMA("10D")} className="cursor-pointer">
+          <th
+            onClick={() => selectMA("10D")}
+            className={`cursor-pointer ${selectedMA === "10D" && "border border-black"}`}
+          >
             10D
           </th>
-          <th onClick={() => selectMA("20D")} className="cursor-pointer">
+          <th
+            onClick={() => selectMA("20D")}
+            className={`cursor-pointer ${selectedMA === "20D" && "border border-black"}`}
+          >
             20D
           </th>
-          <th onClick={() => selectMA("50D")} className="cursor-pointer">
+          <th
+            onClick={() => selectMA("50D")}
+            className={`cursor-pointer ${selectedMA === "50D" && "border border-black"}`}
+          >
             50D
           </th>
-          <th onClick={() => selectMA("100D")} className="cursor-pointer">
+          <th
+            onClick={() => selectMA("100D")}
+            className={`cursor-pointer ${selectedMA === "100D" && "border border-black"}`}
+          >
             100D
           </th>
-          <th onClick={() => selectMA("200D")} className="cursor-pointer">
+          <th
+            onClick={() => selectMA("200D")}
+            className={`cursor-pointer ${selectedMA === "200D" && "border border-black"}`}
+          >
             200D
           </th>
           <th>Cl&gt;MA</th>
