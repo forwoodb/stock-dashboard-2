@@ -12,11 +12,11 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
 
-  const handleSelectMA = (ma) => {
+  const handleSelectMA = (ma: string) => {
     setSelectedMA(ma);
   };
 
-  const handleSort = (col) => {
+  const handleSort = (col: string) => {
     setSortColumn(col);
     console.log(col);
   };
@@ -30,36 +30,39 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
           </th>
           <th>Time</th>
           <th>Close</th>
-          <th onClick={() => handleSelectMA("5D")} className={`cursor-pointer`}>
+          <th
+            onClick={() => handleSelectMA("5D")}
+            className={`cursor-pointer ${selectedMA === "5D" && "border border-black"}`}
+          >
             5D
           </th>
           <th
             onClick={() => handleSelectMA("10D")}
-            className={`cursor-pointer`}
+            className={`cursor-pointer ${selectedMA === "10D" && "border border-black"}`}
           >
             10D
           </th>
           <th
             onClick={() => handleSelectMA("20D")}
-            className={`cursor-pointer`}
+            className={`cursor-pointer ${selectedMA === "20D" && "border border-black"}`}
           >
             20D
           </th>
           <th
             onClick={() => handleSelectMA("50D")}
-            className={`cursor-pointer`}
+            className={`cursor-pointer ${selectedMA === "50D" && "border border-black"}`}
           >
             50D
           </th>
           <th
             onClick={() => handleSelectMA("100D")}
-            className={`cursor-pointer`}
+            className={`cursor-pointer ${selectedMA === "100D" && "border border-black"}`}
           >
             100D
           </th>
           <th
             onClick={() => handleSelectMA("200D")}
-            className={`cursor-pointer`}
+            className={`cursor-pointer ${selectedMA === "200D" && "border border-black"}`}
           >
             200D
           </th>

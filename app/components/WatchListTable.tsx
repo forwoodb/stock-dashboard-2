@@ -76,8 +76,8 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
       <tbody>
         {data
           .sort((a, b) => {
-            const aPct = a.Close - a[selectedMA];
-            const bPct = b.Close - b[selectedMA];
+            const aPct = ((a.Close - a[selectedMA]) / a[selectedMA]) * 100;
+            const bPct = ((b.Close - b[selectedMA]) / b[selectedMA]) * 100;
 
             if (sortColumn === "ticker") {
               return a.ticker.localeCompare(b.ticker);
