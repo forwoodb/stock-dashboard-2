@@ -10,6 +10,7 @@ interface TableProps {
 
 const PositionSizesTable = ({ data, serverAction }: TableProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
+  const [sortColumn, setSortCulmn] = useState("ticker");
 
   const handleSelectMA = (ma) => {
     setSelectedMA(ma);
