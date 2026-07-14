@@ -81,6 +81,7 @@ const PositionSizesTable = ({
             Cl&gt;MA
           </th>
           <th>Entry</th>
+          {/* <th>Loss $</th> */}
           <th>AvgCost</th>
           <th>PosSize</th>
         </tr>
@@ -142,6 +143,7 @@ const PositionSizesTable = ({
                 </td>
                 <td>{pctAbvMA.toFixed(2)}%</td>
                 <td>${entry.toFixed(2)}</td>
+                {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 <td>{stock.averageCost}</td>
                 <td>{stock.positionSize}</td>
                 <td>
