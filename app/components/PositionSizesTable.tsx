@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { StockInfoType } from "../lib/types";
+import { MAKey, StockInfoType } from "../lib/types";
 import { useState } from "react";
 
 interface TableProps {
@@ -16,10 +16,10 @@ const PositionSizesTable = ({
   accBal,
   stopLoss,
 }: TableProps) => {
-  const [selectedMA, setSelectedMA] = useState("10D");
+  const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
 
-  const handleSelectMA = (ma: string) => {
+  const handleSelectMA = (ma: MAKey) => {
     setSelectedMA(ma);
   };
 
@@ -88,8 +88,8 @@ const PositionSizesTable = ({
       <tbody>
         {data
           .sort((a, b) => {
-            const aPct = ((a.Close - a[selectedMA]) / a.Close) * 100;
-            const bPct = ((b.Close - b[selectedMA]) / b.Close) * 100;
+            const aPct = ((a.Close - (a[selectedMA] ?? 0)) / a.Close) * 100;
+            const bPct = ((b.Close - (b[selectedMA] ?? 0)) / b.Close) * 100;
             if (sortColumn === "ticker") {
               return a.ticker.localeCompare(b.ticker);
             } else {
@@ -98,42 +98,45 @@ const PositionSizesTable = ({
           })
           .map((stock) => {
             const pctAbvMA =
-              ((stock.Close - stock[selectedMA]) / stock.Close) * 100;
+              ((stock.Close - (stock[selectedMA] ?? 0)) / stock.Close) * 100;
 
-            const entry = (stopLoss / pctAbvMA) * avgAmt;
+            const entry = (Number(stopLoss) / pctAbvMA) * avgAmt;
 
             return (
-              <tr key={stock._id} className={pctAbvMA < 0 && `text-red-600`}>
+              <tr
+                key={stock._id}
+                className={`${pctAbvMA < 0 && `text-red-600`}`}
+              >
                 <td>{stock.ticker}</td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
-                  className={`${stock.Close < stock["5D"] && `text-red-500`}`}
+                  className={`${stock.Close < (stock["5D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["5D"]}
                 </td>
                 <td
-                  className={`${stock.Close < stock["10D"] && `text-red-500`}`}
+                  className={`${stock.Close < (stock["10D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["10D"]}
                 </td>
                 <td
-                  className={`${stock.Close < stock["20D"] && `text-red-500`}`}
+                  className={`${stock.Close < (stock["20D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["20D"]}
                 </td>
                 <td
-                  className={`${stock.Close < stock["50D"] && `text-red-500`}`}
+                  className={`${stock.Close < (stock["50D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["50D"]}
                 </td>
                 <td
-                  className={`${stock.Close < stock["100D"] && `text-red-500`}`}
+                  className={`${stock.Close < (stock["100D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["100D"]}
                 </td>
                 <td
-                  className={`${stock.Close < stock["200D"] && `text-red-500`}`}
+                  className={`${stock.Close < (stock["200D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["200D"]}
                 </td>

@@ -11,8 +11,8 @@ export interface StockType {
 
 export interface csvRow {
   ticker: string;
-  Time?: string;
-  Close?: number;
+  Time: string;
+  Close: number;
   "5D"?: number;
   "10D"?: number;
   "20D"?: number;
@@ -24,8 +24,8 @@ export interface csvRow {
 export interface StockInfoType {
   _id: string;
   ticker: string;
-  Time?: string;
-  Close?: number;
+  Time: string;
+  Close: number;
   "5D"?: number;
   "10D"?: number;
   "20D"?: number;
@@ -47,3 +47,5 @@ export interface UserType {
   accountBalance: string;
   stopLoss: string;
 }
+
+export type MAKey = "5D" | "10D" | "20D" | "50D" | "100D" | "200D";
