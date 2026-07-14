@@ -37,6 +37,7 @@ export interface StockInfoType {
 }
 
 export interface UserType {
+  _id: string;
   name: string;
   email: string;
   emailVerified: boolean;
