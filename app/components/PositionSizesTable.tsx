@@ -6,9 +6,16 @@ import { useState } from "react";
 interface TableProps {
   data: StockInfoType[];
   serverAction: (formData: FormData) => Promise<void>;
+  accBal: string;
+  stopLoss: string;
 }
 
-const PositionSizesTable = ({ data, serverAction }: TableProps) => {
+const PositionSizesTable = ({
+  data,
+  serverAction,
+  accBal,
+  stopLoss,
+}: TableProps) => {
   const [selectedMA, setSelectedMA] = useState("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
 
@@ -20,6 +27,8 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
     setSortColumn(col);
     console.log(col);
   };
+
+  const avgAmt = accBal / data.length;
 
   return (
     <table className="table">
@@ -72,6 +81,7 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
           >
             Cl&gt;MA
           </th>
+          <th>Entry</th>
           <th>AvgCost</th>
           <th>PosSize</th>
         </tr>
@@ -90,6 +100,9 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
           .map((stock) => {
             const pctAbvMA =
               ((stock.Close - stock[selectedMA]) / stock.Close) * 100;
+
+            const entry = (stopLoss / pctAbvMA) * avgAmt;
+
             return (
               <tr key={stock._id} className={pctAbvMA < 0 && `text-red-500`}>
                 <td>{stock.ticker}</td>
@@ -102,6 +115,7 @@ const PositionSizesTable = ({ data, serverAction }: TableProps) => {
                 <td>{stock["100D"]}</td>
                 <td>{stock["200D"]}</td>
                 <td>{pctAbvMA.toFixed(2)}%</td>
+                <td>${entry.toFixed(2)}</td>
                 <td>{stock.averageCost}</td>
                 <td>{stock.positionSize}</td>
                 <td>

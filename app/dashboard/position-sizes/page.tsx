@@ -61,7 +61,12 @@ const PositionsPage = async () => {
           </div>
           <AccountPositions stocks={stocks} accBal={balance} stopLoss={stop} />
         </div>
-        <PositionSizesTable data={merge} serverAction={toWatchList} />
+        <PositionSizesTable
+          data={merge}
+          serverAction={toWatchList}
+          accBal={balance}
+          stopLoss={stop}
+        />
       </div>
     </main>
   );
