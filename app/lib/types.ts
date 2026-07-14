@@ -7,6 +7,7 @@ export interface StockType {
   ticker: string;
   company: string;
   averageCost: number;
+  positionSize: number;
 }
 
 export interface csvRow {

@@ -1,8 +1,8 @@
 import fs from "fs";
 import { parse } from "csv-parse/sync";
-import { csvRow } from "@/app/lib/types";
+import { csvRow, StockType } from "@/app/lib/types";
 
-export const mergeCSVData = (list) => {
+export const mergeCSVData = (list: StockType[]) => {
   // Get CSV data
   const csv = fs.readFileSync("csv_data.csv", "utf-8");
 
