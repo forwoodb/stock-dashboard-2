@@ -36,7 +36,7 @@ export interface StockInfoType {
   positionSize: number;
 }
 
-export interface User {
+export interface UserType {
   name: string;
   email: string;
   emailVerified: boolean;
