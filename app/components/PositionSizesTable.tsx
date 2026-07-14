@@ -104,16 +104,40 @@ const PositionSizesTable = ({
             const entry = (stopLoss / pctAbvMA) * avgAmt;
 
             return (
-              <tr key={stock._id} className={pctAbvMA < 0 && `text-red-500`}>
+              <tr key={stock._id} className={pctAbvMA < 0 && `text-red-600`}>
                 <td>{stock.ticker}</td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
-                <td>{stock["5D"]}</td>
-                <td>{stock["10D"]}</td>
-                <td>{stock["20D"]}</td>
-                <td>{stock["50D"]}</td>
-                <td>{stock["100D"]}</td>
-                <td>{stock["200D"]}</td>
+                <td
+                  className={`${stock.Close < stock["5D"] && `text-red-500`}`}
+                >
+                  {stock["5D"]}
+                </td>
+                <td
+                  className={`${stock.Close < stock["10D"] && `text-red-500`}`}
+                >
+                  {stock["10D"]}
+                </td>
+                <td
+                  className={`${stock.Close < stock["20D"] && `text-red-500`}`}
+                >
+                  {stock["20D"]}
+                </td>
+                <td
+                  className={`${stock.Close < stock["50D"] && `text-red-500`}`}
+                >
+                  {stock["50D"]}
+                </td>
+                <td
+                  className={`${stock.Close < stock["100D"] && `text-red-500`}`}
+                >
+                  {stock["100D"]}
+                </td>
+                <td
+                  className={`${stock.Close < stock["200D"] && `text-red-500`}`}
+                >
+                  {stock["200D"]}
+                </td>
                 <td>{pctAbvMA.toFixed(2)}%</td>
                 <td>${entry.toFixed(2)}</td>
                 <td>{stock.averageCost}</td>
