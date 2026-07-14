@@ -1,8 +1,13 @@
 import { revalidatePath } from "next/cache";
 import { User } from "../models/User";
 import { connectDb } from "../lib/mongodb";
+import { UserType } from "../lib/types";
 
-const StopLossForm = ({ user }) => {
+interface AccountFormPropTypes {
+  user: UserType;
+}
+
+const StopLossForm = ({ user }: AccountFormPropTypes) => {
   const updateStopLoss = async (formData: FormData) => {
     "use server";
     await connectDb();
