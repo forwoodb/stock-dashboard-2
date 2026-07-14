@@ -2,7 +2,7 @@ import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
-import { StockInfoType, StockType } from "@/app/lib/types";
+import { StockInfoType, StockType, User } from "@/app/lib/types";
 import PositionSizesTable from "@/app/components/PositionSizesTable";
 import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
@@ -27,7 +27,7 @@ const PositionsPage = async () => {
   const userId = session.user.id;
 
   const userData = await User.findOne({ _id: userId }).lean();
-  const user = JSON.parse(JSON.stringify(userData));
+  const user = JSON.parse(JSON.stringify(userData)) as User;
 
   const balance = user.accountBalance;
 

@@ -35,3 +35,14 @@ export interface StockInfoType {
   averageCost: number;
   positionSize: number;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  emailVerified: boolean;
+  image: string;
+  role: string;
+  banned: boolean;
+  accountBalance: string;
+  stopLoss: string;
+}
