@@ -5,12 +5,14 @@ interface AccountPositionsProps {
   stocks: StockType[];
   accBal: string;
   stopLoss: string;
+  runPython: Promise<void>;
 }
 
 const AccountPositions = ({
   stocks,
   accBal,
   stopLoss,
+  runPython,
 }: AccountPositionsProps) => {
   const numPos = stocks.length;
   const avgAmt = Number(accBal) / Number(stocks.length);
@@ -18,10 +20,6 @@ const AccountPositions = ({
   const maxAmt = Number(stopLoss) * Number(avgPos);
   const maxPos = maxAmt.toFixed(2);
   // const stopLossDecimal = stopLoss / 100;
-
-  const runPython = () => {
-    fetch("/api/dashboard/run-python");
-  };
 
   return (
     <div className="mb-3 w-[75%]">

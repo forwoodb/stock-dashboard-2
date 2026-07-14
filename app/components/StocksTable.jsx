@@ -9,13 +9,10 @@ const StocksTable = ({ stocks, deleteStock }) => {
 
   // const [sortedStocks, setSortedStocks] = useState(defaultSort);
   const [sortedStocks, setSortedStocks] = useState(stocks);
-  const [sortOrder, setSortOrder] = useState({ key: "ticker", order: null });
+  const [sortOrder, setSortOrder] = useState({ key: "ticker", order: "asc" });
 
   const sortTable = async (key) => {
     const sorted = stocks
-      .map((stock) => {
-        return stock;
-      })
       .sort((a, b) => {
         if (sortOrder.order === null) {
           setSortOrder({ key, order: "asc" });
@@ -29,6 +26,9 @@ const StocksTable = ({ stocks, deleteStock }) => {
           setSortOrder({ key, order: null });
           return stocks;
         }
+      })
+      .map((stock) => {
+        return stock;
       });
 
     setSortedStocks(sorted);

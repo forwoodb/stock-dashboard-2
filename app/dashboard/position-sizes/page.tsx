@@ -11,6 +11,7 @@ import { User } from "@/app/models/User";
 import AccountBalanceForm from "@/app/components/AccountBalanceForm";
 import StopLossForm from "@/app/components/StopLossForm";
 import AccountPositions from "@/app/components/AccountPositions";
+import { execFile } from "child_process";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -34,6 +35,12 @@ const PositionsPage = async () => {
 
   const data = await Stock.find({ position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
+
+  const runPython = async () => {
+    "use server";
+    // fetch("/api/dashboard/run-python");
+    execFile("python3", ["yahoo.py"]);
+  };
 
   const merge = mergeCSVData(stocks) as StockInfoType[];
 
@@ -59,7 +66,12 @@ const PositionsPage = async () => {
             <AccountBalanceForm user={user} />
             <StopLossForm user={user} />
           </div>
-          <AccountPositions stocks={stocks} accBal={balance} stopLoss={stop} />
+          <AccountPositions
+            stocks={stocks}
+            accBal={balance}
+            stopLoss={stop}
+            runPython={runPython}
+          />
         </div>
         <PositionSizesTable
           data={merge}
