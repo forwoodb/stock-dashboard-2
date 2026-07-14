@@ -21,9 +21,9 @@ const AdminPage = async () => {
   });
 
   // Uncomment this once admin user(s) is created
-  // if (session?.user.role !== "admin") {
-  //   redirect("/");
-  // }
+  if (session?.user.role !== "admin") {
+    redirect("/");
+  }
 
   // console.log(session);
 
