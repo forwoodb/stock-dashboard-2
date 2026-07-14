@@ -5,7 +5,7 @@ interface AccountPositionsProps {
   stocks: StockType[];
   accBal: string;
   stopLoss: string;
-  runPython: Promise<void>;
+  runPython: () => Promise<void>;
 }
 
 const AccountPositions = ({

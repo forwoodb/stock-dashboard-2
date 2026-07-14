@@ -2,7 +2,7 @@ import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
-import { StockInfoType, StockType, User, UserType } from "@/app/lib/types";
+import { StockInfoType, StockType } from "@/app/lib/types";
 import PositionSizesTable from "@/app/components/PositionSizesTable";
 import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
@@ -27,7 +27,7 @@ const PositionsPage = async () => {
   const userId = session.user.id;
 
   const userData = await User.findOne({ _id: userId }).lean();
-  const user = JSON.parse(JSON.stringify(userData)) as UserType;
+  const user = JSON.parse(JSON.stringify(userData));
 
   const balance = user.accountBalance;
 
@@ -38,7 +38,6 @@ const PositionsPage = async () => {
 
   const runPython = async () => {
     "use server";
-    // fetch("/api/dashboard/run-python");
     execFile("python3", ["yahoo.py"]);
   };
 

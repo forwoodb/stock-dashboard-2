@@ -25,10 +25,9 @@ const PositionSizesTable = ({
 
   const handleSort = (col: string) => {
     setSortColumn(col);
-    console.log(col);
   };
 
-  const avgAmt = accBal / data.length;
+  const avgAmt = Number(accBal) / data.length;
 
   return (
     <table className="table">
