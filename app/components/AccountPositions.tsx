@@ -6,6 +6,7 @@ interface AccountPositionsProps {
   accBal: string;
   stopLoss: string;
   runPython: () => Promise<void>;
+  // getStocks: () => Promise<void>;
 }
 
 const AccountPositions = ({
@@ -13,6 +14,7 @@ const AccountPositions = ({
   accBal,
   stopLoss,
   runPython,
+  // getStocks,
 }: AccountPositionsProps) => {
   const numPos = stocks.length;
   const avgAmt = Number(accBal) / Number(stocks.length);
@@ -20,12 +22,6 @@ const AccountPositions = ({
   const maxAmt = Number(stopLoss) * Number(avgPos);
   const maxPos = maxAmt.toFixed(2);
   // const stopLossDecimal = stopLoss / 100;
-
-  const getStocks = async () => {
-    const res = await fetch(`/api/stock-data`);
-    const data = await res.json();
-    console.log(data);
-  };
 
   return (
     <div className="mb-3 w-[75%]">
@@ -48,9 +44,9 @@ const AccountPositions = ({
         <button onClick={runPython} className="btn">
           Update Prices
         </button>
-        <button onClick={getStocks} className="btn">
+        {/* <button onClick={getStocks} className="btn">
           FastAPI
-        </button>
+        </button> */}
       </div>
     </div>
   );

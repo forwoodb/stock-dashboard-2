@@ -56,6 +56,14 @@ const PositionsPage = async () => {
     revalidatePath("/dashboard/position-sizes");
   };
 
+  // // FastAPI route
+  // const getStocks = async () => {
+  //   "use server";
+  //   const res = await fetch(`/api/stock-data`);
+  //   const data = await res.json();
+  //   console.log(data);
+  // };
+
   return (
     <main>
       <div className="container-main w-[95%] m-auto">
@@ -70,6 +78,7 @@ const PositionsPage = async () => {
             accBal={balance}
             stopLoss={stop}
             runPython={runPython}
+            // getStocks={getStocks}
           />
         </div>
         <PositionSizesTable
