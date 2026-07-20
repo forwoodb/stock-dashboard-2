@@ -21,6 +21,10 @@ const AccountPositions = ({
   const maxPos = maxAmt.toFixed(2);
   // const stopLossDecimal = stopLoss / 100;
 
+  const getStocks = async () => {
+    console.log("click");
+  };
+
   return (
     <div className="mb-3 w-[75%]">
       <div className="flex flex-col justify-between h-full p-4 rounded bg-white border border-gray-300">
@@ -41,6 +45,9 @@ const AccountPositions = ({
         </p>
         <button onClick={runPython} className="btn">
           Update Prices
+        </button>
+        <button onClick={getStocks} className="btn">
+          FastAPI
         </button>
       </div>
     </div>
