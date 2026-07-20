@@ -22,7 +22,9 @@ const AccountPositions = ({
   // const stopLossDecimal = stopLoss / 100;
 
   const getStocks = async () => {
-    console.log("click");
+    const res = await fetch(`/api/stock-data`);
+    const data = await res.json();
+    console.log(data);
   };
 
   return (

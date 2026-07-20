@@ -1,3 +1,7 @@
-export async function POST() {
-  await fetch("localhost:8000/get_stocks");
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  const res = await fetch("http://localhost:8000/get_stocks");
+  const data = await res.json();
+  return NextResponse.json({ python_data: data });
 }
