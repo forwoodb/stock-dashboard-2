@@ -99,7 +99,13 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
-                  className={`${stock.Close < (stock["5D"] ?? 0) && `text-red-500`}`}
+                  className={
+                    stock.Close < (stock["5D"] ?? 0)
+                      ? `text-red-500`
+                      : (stock["5D"] ?? 0) > (stock[selectedMA] ?? 0)
+                        ? `text-green-500`
+                        : ""
+                  }
                 >
                   {stock["5D"]}
                 </td>

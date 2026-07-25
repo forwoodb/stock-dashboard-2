@@ -18,6 +18,7 @@ const PositionSizesTable = ({
 }: TableProps) => {
   const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
+  const [trade, setTrade] = useState(false);
 
   const handleSelectMA = (ma: MAKey) => {
     setSelectedMA(ma);
