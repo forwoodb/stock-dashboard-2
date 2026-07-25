@@ -27,6 +27,10 @@ const PositionSizesTable = ({
     setSortColumn(col);
   };
 
+  const handleTrade = () => {
+    console.log("click");
+  };
+
   const avgAmt = Number(accBal) / data.length;
 
   return (
@@ -159,6 +163,11 @@ const PositionSizesTable = ({
                   >
                     Edit
                   </Link>
+                </td>
+                <td>
+                  <button onClick={handleTrade} className="btn">
+                    Trade
+                  </button>
                 </td>
               </tr>
             );
