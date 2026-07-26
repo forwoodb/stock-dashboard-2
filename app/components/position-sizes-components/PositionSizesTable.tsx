@@ -1,14 +1,7 @@
 "use client";
 import Link from "next/link";
-import { MAKey, StockInfoType } from "../../lib/types";
+import { TableProps, MAKey, StockInfoType } from "../../lib/types";
 import { useState } from "react";
-
-interface TableProps {
-  data: StockInfoType[];
-  serverAction: (formData: FormData) => Promise<void>;
-  accBal: string;
-  stopLoss: string;
-}
 
 const PositionSizesTable = ({
   data,

@@ -50,3 +50,10 @@ export interface UserType {
 }
 
 export type MAKey = "5D" | "10D" | "20D" | "50D" | "100D" | "200D";
+
+export interface TableProps {
+  data: StockInfoType[];
+  serverAction: (formData: FormData) => Promise<void>;
+  accBal: string;
+  stopLoss: string;
+}

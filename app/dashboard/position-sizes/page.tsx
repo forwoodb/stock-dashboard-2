@@ -3,7 +3,7 @@ import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
-import PositionSizesTable from "@/app/components/position-sizes-components/PositionSizesTable";
+import PositionSizesClient from "@/app/components/position-sizes-components/PositionSizesClient";
 import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -81,7 +81,7 @@ const PositionsPage = async () => {
             // getStocks={getStocks}
           />
         </div>
-        <PositionSizesTable
+        <PositionSizesClient
           data={merge}
           serverAction={toWatchList}
           accBal={balance}
