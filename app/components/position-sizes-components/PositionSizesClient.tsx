@@ -2,6 +2,7 @@
 import { useState } from "react";
 import PositionSizesTable from "./PositionSizesTable";
 import { TableProps, MAKey, StockInfoType } from "../../lib/types";
+import TradeForm from "./TradeForm";
 
 // interface StockTrade {
 
@@ -13,9 +14,11 @@ const PositionSizesClient = ({
   accBal,
   stopLoss,
 }: TableProps) => {
-  // const [trade, setTrade] = useState(false);
+  const [trade, setTrade] = useState(false);
+  const [transaction, setTransaction] = useState({});
 
   const handleTrade = (stock: StockInfoType) => {
+    setTrade(!trade);
     const transaction = {
       price: stock.Close,
       // type: "buy" || stock.type,
@@ -26,11 +29,15 @@ const PositionSizesClient = ({
       oneHundredDayAvg: stock["100D"],
       twoHundredDayAvg: stock["200D"],
     };
+    setTransaction(transaction);
     console.log(transaction);
   };
 
   return (
     <div>
+      <div className={`${trade === false && `hidden`}`}>
+        <TradeForm transaction={transaction} />
+      </div>
       <PositionSizesTable
         data={data}
         serverAction={serverAction}

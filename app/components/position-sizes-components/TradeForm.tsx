@@ -1,6 +1,10 @@
-import React from "react";
+import { StockInfoType } from "@/app/lib/types";
 
-const TradeForm = () => {
+interface TradeFormPropTypes {
+  transaction: StockInfoType;
+}
+
+const TradeForm = ({ transaction }: TradeFormPropTypes) => {
   return (
     <div>
       <form action="">
@@ -8,6 +12,7 @@ const TradeForm = () => {
           <option value="buy">Buy</option>
           <option value="sell">Sell</option>
         </select>
+        <input type="text" />
         <button className="btn">Trade</button>
       </form>
     </div>
