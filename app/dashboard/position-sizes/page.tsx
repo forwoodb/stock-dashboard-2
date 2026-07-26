@@ -3,14 +3,14 @@ import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import { mergeCSVData } from "@/app/lib/functions";
 import { StockInfoType, StockType } from "@/app/lib/types";
-import PositionSizesTable from "@/app/components/PositionSizesTable";
+import PositionSizesTable from "@/app/components/position-sizes-components/PositionSizesTable";
 import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { User } from "@/app/models/User";
-import AccountBalanceForm from "@/app/components/AccountBalanceForm";
-import StopLossForm from "@/app/components/StopLossForm";
-import AccountPositions from "@/app/components/AccountPositions";
+import AccountBalanceForm from "@/app/components/position-sizes-components/AccountBalanceForm";
+import StopLossForm from "@/app/components/position-sizes-components/StopLossForm";
+import AccountPositions from "@/app/components/position-sizes-components/AccountPositions";
 import { execFile } from "child_process";
 
 const PositionsPage = async () => {

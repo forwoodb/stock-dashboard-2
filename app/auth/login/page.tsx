@@ -1,4 +1,4 @@
-import AuthForm from "@/app/components/AuthForm";
+import AuthForm from "@/app/components/auth-components/AuthForm";
 import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import { redirect } from "next/navigation";

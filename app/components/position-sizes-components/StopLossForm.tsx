@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
-import { User } from "../models/User";
-import { connectDb } from "../lib/mongodb";
-import { UserType } from "../lib/types";
+import { User } from "../../models/User";
+import { connectDb } from "../../lib/mongodb";
+import { UserType } from "../../lib/types";
 
 interface AccountFormPropTypes {
   user: UserType;

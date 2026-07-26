@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useActionState } from "react";
-import { LoginState } from "../lib/types";
-import { loginGoogleAction } from "../lib/actions";
+import { LoginState } from "../../lib/types";
+import { loginGoogleAction } from "../../lib/actions";
 
 interface AuthFormTypes {
   mode: string;

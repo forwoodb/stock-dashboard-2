@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { MAKey, StockInfoType } from "../lib/types";
+import { MAKey, StockInfoType } from "../../lib/types";
 import { useState } from "react";
 
 interface TableProps {

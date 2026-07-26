@@ -1,5 +1,5 @@
 "use client";
-import { StockType } from "../lib/types";
+import { StockType } from "../../lib/types";
 
 interface AccountPositionsProps {
   stocks: StockType[];

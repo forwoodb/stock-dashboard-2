@@ -1,4 +1,4 @@
-import AuthButton from "./AuthButton";
+import AuthButton from "./auth-components/AuthButton";
 import Link from "next/link";
 
 const Navbar = () => {
