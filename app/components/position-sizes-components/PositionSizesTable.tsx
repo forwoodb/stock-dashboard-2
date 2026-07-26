@@ -1,17 +1,25 @@
 "use client";
 import Link from "next/link";
-import { TableProps, MAKey, StockInfoType } from "../../lib/types";
+import { MAKey, StockInfoType } from "../../lib/types";
 import { useState } from "react";
+
+export interface PositionsTableProps {
+  data: StockInfoType[];
+  serverAction: (formData: FormData) => Promise<void>;
+  accBal: string;
+  stopLoss: string;
+  handleTrade: (stock: StockInfoType) => void;
+}
 
 const PositionSizesTable = ({
   data,
   serverAction,
   accBal,
   stopLoss,
-}: TableProps) => {
+  handleTrade,
+}: PositionsTableProps) => {
   const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
-  const [trade, setTrade] = useState(false);
 
   const handleSelectMA = (ma: MAKey) => {
     setSelectedMA(ma);
@@ -19,10 +27,6 @@ const PositionSizesTable = ({
 
   const handleSort = (col: string) => {
     setSortColumn(col);
-  };
-
-  const handleTrade = () => {
-    console.log("click");
   };
 
   const avgAmt = Number(accBal) / data.length;
@@ -159,7 +163,7 @@ const PositionSizesTable = ({
                   </Link>
                 </td>
                 <td>
-                  <button onClick={handleTrade} className="btn">
+                  <button onClick={() => handleTrade(stock)} className="btn">
                     Trade
                   </button>
                 </td>
