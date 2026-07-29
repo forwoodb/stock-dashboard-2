@@ -37,6 +37,19 @@ export interface StockInfoType {
   positionSize: number;
 }
 
+export interface Transaction {
+  type: string;
+  ticker: string;
+  Time: string;
+  Close: number;
+  "5D"?: number;
+  "10D"?: number;
+  "20D"?: number;
+  "50D"?: number;
+  "100D"?: number;
+  "200D"?: number;
+}
+
 export interface UserType {
   _id: string;
   name: string;
