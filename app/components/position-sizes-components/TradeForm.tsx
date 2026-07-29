@@ -14,7 +14,7 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
           <option value="buy">Buy</option>
           <option value="sell">Sell</option>
         </select>
-        <input type="text" value={transaction.Close} />
+        <input type="text" defaultValue={transaction.Close} />
         <button className="btn">Trade</button>
       </form>
     </div>
