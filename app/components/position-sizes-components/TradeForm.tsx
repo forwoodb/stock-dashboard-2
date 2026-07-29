@@ -10,11 +10,22 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
   return (
     <div>
       <form action={tradeAction}>
-        <select name="trade" id="trade">
-          <option value="buy">Buy</option>
-          <option value="sell">Sell</option>
-        </select>
-        <input type="text" defaultValue={transaction.Close} />
+        <label className="select">
+          <span className="label">Type</span>
+          <select name="trade">
+            <option>Buy</option>
+            <option>Sell</option>
+          </select>
+        </label>
+        <label className="floating-label">
+          <span>Price</span>
+          <input
+            type="text"
+            placeholder="Price"
+            defaultValue={transaction.Close}
+            className="input input-md"
+          />
+        </label>
         <button className="btn">Trade</button>
       </form>
     </div>
