@@ -10,6 +10,16 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
   return (
     <div>
       <form action={tradeAction}>
+        <label className="floating-label">
+          <span>Price</span>
+          <input
+            type="text"
+            name="ticker"
+            placeholder="Ticker"
+            defaultValue={transaction.ticker}
+            className="input input-md"
+          />
+        </label>
         <label className="select">
           <span className="label">Type</span>
           <select name="trade">
@@ -24,6 +34,15 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
             name="price"
             placeholder="Price"
             defaultValue={transaction.Close}
+            className="input input-md"
+          />
+        </label>
+        <label className="floating-label">
+          <span>Position Size</span>
+          <input
+            type="text"
+            name="position-size"
+            placeholder="Position Size"
             className="input input-md"
           />
         </label>
