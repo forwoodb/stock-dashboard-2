@@ -1,17 +1,12 @@
-import { connectDb } from "@/app/lib/mongodb";
-import { StockInfoType, Transaction } from "@/app/lib/types";
+"use client";
+import { StockInfoType } from "@/app/lib/types";
+import { tradeAction } from "@/app/lib/actions";
 
 interface TradeFormPropTypes {
   transaction: StockInfoType;
 }
 
 const TradeForm = ({ transaction }: TradeFormPropTypes) => {
-  const tradeAction = async (formData: FormData) => {
-    "use server";
-    await connectDb();
-
-    console.log(formData);
-  };
   return (
     <div>
       <form action={tradeAction}>

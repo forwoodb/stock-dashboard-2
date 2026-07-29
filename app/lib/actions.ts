@@ -15,3 +15,10 @@ export const loginGoogleAction = async () => {
 
   redirect(response.url!);
 };
+
+export const tradeAction = async (formData: FormData) => {
+  "use server";
+  await connectDb();
+
+  console.log(formData);
+};
