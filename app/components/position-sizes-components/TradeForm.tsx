@@ -21,6 +21,7 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
           <span>Price</span>
           <input
             type="text"
+            name="price"
             placeholder="Price"
             defaultValue={transaction.Close}
             className="input input-md"
