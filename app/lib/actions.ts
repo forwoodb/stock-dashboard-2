@@ -4,7 +4,6 @@ import { connectDb } from "./mongodb";
 import { auth } from "./auth";
 
 export const loginGoogleAction = async () => {
-  // "use server";
   await connectDb();
 
   const response = await auth.api.signInSocial({
@@ -17,8 +16,9 @@ export const loginGoogleAction = async () => {
 };
 
 export const tradeAction = async (formData: FormData) => {
-  // "use server";
   await connectDb();
 
-  console.log(formData);
+  const data = Object.fromEntries(formData);
+
+  console.log(data);
 };

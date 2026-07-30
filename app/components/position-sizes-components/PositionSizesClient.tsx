@@ -3,7 +3,6 @@ import { useState } from "react";
 import PositionSizesTable from "./PositionSizesTable";
 import { TableProps, MAKey, StockInfoType } from "../../lib/types";
 import TradeForm from "./TradeForm";
-import { SubmitEvent } from "react";
 
 const PositionSizesClient = ({
   data,
@@ -29,31 +28,14 @@ const PositionSizesClient = ({
       "200D": stock["200D"],
       averageCost: stock.averageCost,
       positionSize: stock.positionSize,
-      // type: stock.type,
-      // ticker: stock.ticker,
-      // time: stock.Time,
-      // Close: stock.Close,
-      // fiveDayAvg: stock["5D"],
-      // tenDayAvg: stock["10D"],
-      // twentyDayAvg: stock["20D"],
-      // fiftyDayAvg: stock["50D"],
-      // oneHundredDayAvg: stock["100D"],
-      // twoHundredDayAvg: stock["200D"],
     };
     setTransaction(transaction);
     console.log(transaction);
   };
 
-  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("click");
-  };
-
   return (
     <div>
-      {trade && transaction && (
-        <TradeForm transaction={transaction} handleSubmit={handleSubmit} />
-      )}
+      {trade && transaction && <TradeForm transaction={transaction} />}
       <PositionSizesTable
         data={data}
         serverAction={serverAction}
