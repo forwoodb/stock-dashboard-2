@@ -49,32 +49,28 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
             className="input input-md"
           />
         </label>
-        <label className="floating-label">
-          <span>5 Day</span>
-          <input
-            type="text"
-            name="five-day"
-            defaultValue={transaction["5D"]}
-            placeholder="Position Size"
-            className="input input-md"
-          />
-        </label>
-        <input type="text" name="ten-day" defaultValue={transaction["10D"]} />
+        <input type="text" name="fiveDayAvg" defaultValue={transaction["5D"]} />
+        <input type="text" name="tenDayAvg" defaultValue={transaction["10D"]} />
         <input
           type="text"
-          name="twenty-day"
-          defaultValue={transaction["10D"]}
+          name="twentyDayAvg"
+          defaultValue={transaction["20D"]}
         />
-        <input type="text" name="fifty-day" defaultValue={transaction["10D"]} />
+        <input type="text" name="fifty-day" defaultValue={transaction["20D"]} />
         <input
           type="text"
-          name="one-hundred-day"
-          defaultValue={transaction["10D"]}
+          name="fiftyDayAvg"
+          defaultValue={transaction["50D"]}
         />
         <input
           type="text"
-          name="two-hundred-day"
-          defaultValue={transaction["10D"]}
+          name="oneHundredDayAvg"
+          defaultValue={transaction["100D"]}
+        />
+        <input
+          type="text"
+          name="twoHundredDayAvg"
+          defaultValue={transaction["200D"]}
         />
         <button className="btn">Trade</button>
       </form>

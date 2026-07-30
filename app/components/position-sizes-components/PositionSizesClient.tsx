@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import PositionSizesTable from "./PositionSizesTable";
-import { TableProps, MAKey, StockInfoType } from "../../lib/types";
+import { TableProps, StockInfoType } from "../../lib/types";
 import TradeForm from "./TradeForm";
 
 const PositionSizesClient = ({
