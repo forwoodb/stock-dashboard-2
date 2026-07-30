@@ -1,15 +1,18 @@
 "use client";
 import { StockInfoType } from "@/app/lib/types";
-import { tradeAction } from "@/app/lib/actions";
+// import { tradeAction } from "@/app/lib/actions";
+import { SubmitEvent } from "react";
 
 interface TradeFormPropTypes {
   transaction: StockInfoType;
+  handleSubmit: (e: SubmitEvent<HTMLFormElement>) => Promise<void>;
 }
 
-const TradeForm = ({ transaction }: TradeFormPropTypes) => {
+const TradeForm = ({ transaction, handleSubmit }: TradeFormPropTypes) => {
   return (
     <div>
-      <form action={tradeAction}>
+      {/* <form action={tradeAction}> */}
+      <form onSubmit={handleSubmit}>
         <label className="floating-label">
           <span>Price</span>
           <input

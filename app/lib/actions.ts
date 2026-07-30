@@ -17,7 +17,7 @@ export const loginGoogleAction = async () => {
 };
 
 export const tradeAction = async (formData: FormData) => {
-  "use server";
+  // "use server";
   await connectDb();
 
   console.log(formData);
