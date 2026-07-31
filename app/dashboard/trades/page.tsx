@@ -15,6 +15,7 @@ const TradesPage = async () => {
           <th>Ticker</th>
           <th>Type</th>
           <th>Pos Size</th>
+          <th>$ Amt</th>
           <th>5D</th>
         </tr>
       </thead>
@@ -25,6 +26,7 @@ const TradesPage = async () => {
               <td>{trade.ticker}</td>
               <td>{trade.type}</td>
               <td>{trade.positionSize}</td>
+              <td>{trade.dollarAmount}</td>
               <td>{trade.fiveDayAvg}</td>
             </tr>
           );

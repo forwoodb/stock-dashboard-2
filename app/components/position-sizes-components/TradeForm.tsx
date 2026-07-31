@@ -25,7 +25,7 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
         </label>
         <label className="select">
           <span className="label">Type</span>
-          <select name="trade">
+          <select name="type">
             <option>Buy</option>
             <option>Sell</option>
           </select>

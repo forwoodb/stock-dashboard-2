@@ -21,5 +21,6 @@ export const tradeAction = async (formData: FormData) => {
 
   const data = Object.fromEntries(formData);
   const trade = await new Transaction(data);
+
   trade.save();
 };
