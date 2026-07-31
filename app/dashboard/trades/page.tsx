@@ -1,12 +1,22 @@
 import { connectDb } from "@/app/lib/mongodb";
 import { Trade } from "@/app/lib/types";
 import Transaction from "@/app/models/Transaction";
+import { revalidatePath } from "next/cache";
 
 const TradesPage = async () => {
   await connectDb();
 
   const data = await Transaction.find({}).lean();
   const trades = JSON.parse(JSON.stringify(data)) as Trade[];
+
+  const deleteTradeAction = async (id: string) => {
+    "use server";
+    await connectDb();
+
+    await Transaction.findByIdAndDelete(id);
+
+    revalidatePath("/dashboard/trades");
+  };
 
   return (
     <table className="table">
@@ -40,6 +50,11 @@ const TradesPage = async () => {
               <td>{trade.fiftyDayAvg}</td>
               <td>{trade.oneHundredDayAvg}</td>
               <td>{trade.twoHundredDayAvg}</td>
+              <td>
+                <form action={deleteTradeAction.bind(null, trade._id)}>
+                  <button className="btn">Delete</button>
+                </form>
+              </td>
             </tr>
           );
         })}
