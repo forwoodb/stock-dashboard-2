@@ -1,11 +1,25 @@
-import React from "react";
+import { connectDb } from "@/app/lib/mongodb";
+import Transaction from "@/app/models/Transaction";
 
-const TradesPage = () => {
+const TradesPage = async () => {
+  await connectDb();
+
+  const trades = await Transaction.find({});
+
   return (
-    <main>
-      <form action=""></form>
-      <table></table>
-    </main>
+    <table className="table">
+      <thead></thead>
+      <tbody>
+        {trades.map((trade) => {
+          return (
+            <tr key={trade._id}>
+              <td>{trade.ticker}</td>
+              <td>{trade.type}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 

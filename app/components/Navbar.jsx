@@ -40,6 +40,9 @@ const Navbar = () => {
               <Link href={"/dashboard/position-sizes"}>Positions</Link>
             </li>
             <li>
+              <Link href={"/dashboard/trades"}>Trades</Link>
+            </li>
+            <li>
               <Link href={"/admin"}>Admin</Link>
             </li>
           </ul>
@@ -59,6 +62,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link href={"/dashboard/position-sizes"}>Positions</Link>
+          </li>
+          <li>
+            <Link href={"/dashboard/trades"}>Trades</Link>
           </li>
           <li>
             <Link href={"/admin"}>Admin</Link>
