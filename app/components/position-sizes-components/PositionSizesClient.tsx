@@ -14,7 +14,7 @@ const PositionSizesClient = ({
   const [transaction, setTransaction] = useState<StockInfoType | null>(null);
 
   const handleTrade = (stock: StockInfoType) => {
-    setTrade(!trade);
+    setTrade(true);
     const transaction = {
       _id: stock._id,
       ticker: stock.ticker,
@@ -35,7 +35,10 @@ const PositionSizesClient = ({
 
   return (
     <div>
-      {trade && transaction && <TradeForm transaction={transaction} />}
+      {trade && transaction && (
+        // adding a key remounts the form and updates the defaultValues
+        <TradeForm key={transaction.ticker} transaction={transaction} />
+      )}
       <PositionSizesTable
         data={data}
         serverAction={serverAction}

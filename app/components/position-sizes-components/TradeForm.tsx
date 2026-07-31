@@ -1,7 +1,6 @@
 "use client";
 import { StockInfoType } from "@/app/lib/types";
 import { tradeAction } from "@/app/lib/actions";
-// import { SubmitEvent } from "react";
 
 interface TradeFormPropTypes {
   transaction: StockInfoType;
