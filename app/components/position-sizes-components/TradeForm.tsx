@@ -45,7 +45,7 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
           <input
             type="text"
             name="dollarAmount"
-            placeholder="Position Size"
+            placeholder="Dollar Amount"
             className="input input-md"
           />
         </label>
