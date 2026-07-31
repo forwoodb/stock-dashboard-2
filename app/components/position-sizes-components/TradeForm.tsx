@@ -4,9 +4,10 @@ import { tradeAction } from "@/app/lib/actions";
 
 interface TradeFormPropTypes {
   transaction: StockInfoType;
+  closeForm: () => void;
 }
 
-const TradeForm = ({ transaction }: TradeFormPropTypes) => {
+const TradeForm = ({ transaction, closeForm }: TradeFormPropTypes) => {
   return (
     <div>
       {/* Bind data to server action? */}
@@ -71,6 +72,9 @@ const TradeForm = ({ transaction }: TradeFormPropTypes) => {
           defaultValue={transaction["200D"]}
         />
         <button className="btn">Trade</button>
+        <p onClick={closeForm} className="cursor-pointer">
+          X Close
+        </p>
       </form>
     </div>
   );
