@@ -1,11 +1,12 @@
 import { connectDb } from "@/app/lib/mongodb";
+import { Trade } from "@/app/lib/types";
 import Transaction from "@/app/models/Transaction";
 
 const TradesPage = async () => {
   await connectDb();
 
   const data = await Transaction.find({}).lean();
-  const trades = JSON.parse(JSON.stringify(data));
+  const trades = JSON.parse(JSON.stringify(data)) as Trade[];
 
   return (
     <table className="table">

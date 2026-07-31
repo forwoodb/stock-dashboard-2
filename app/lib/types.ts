@@ -70,3 +70,18 @@ export interface TableProps {
   accBal: string;
   stopLoss: string;
 }
+
+export interface Trade {
+  _id: string;
+  ticker: string;
+  type: string;
+  price: number;
+  positionSize: number;
+  dollarAmount: number;
+  fiveDayAvg: number;
+  tenDayAvg: number;
+  twentyDayAvg: number;
+  fiftyDayAvg: number;
+  oneHundredDayAvg: number;
+  twoHundredDayAvg: number;
+}
