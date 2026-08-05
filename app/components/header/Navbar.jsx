@@ -1,5 +1,6 @@
-import AuthButton from "./auth-components/AuthButton";
+import AuthButton from "../auth-components/AuthButton";
 import Link from "next/link";
+import Navlinks from "./Navlinks";
 
 const Navbar = () => {
   return (
@@ -51,24 +52,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link href={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link href={"/dashboard/stocks"}>Stocks</Link>
-          </li>
-          <li>
-            <Link href={"/dashboard/watch-list"}>Watch List</Link>
-          </li>
-          <li>
-            <Link href={"/dashboard/position-sizes"}>Positions</Link>
-          </li>
-          <li>
-            <Link href={"/dashboard/trades"}>Trades</Link>
-          </li>
-          <li>
-            <Link href={"/admin"}>Admin</Link>
-          </li>
+          <Navlinks />
         </ul>
       </div>
       <div className="navbar-end">
