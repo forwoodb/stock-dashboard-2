@@ -5,9 +5,20 @@ import Stock from "@/app/models/Stock";
 import { revalidatePath } from "next/cache";
 import WatchListTable from "@/app/components/WatchListTable";
 import { mergeCSVData } from "@/app/lib/functions";
+import { auth } from "@/app/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const WatchlistPage = async () => {
   await connectDb();
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/auth/login");
+  }
 
   const data = await Stock.find({ watchList: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
