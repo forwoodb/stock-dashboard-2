@@ -1,10 +1,21 @@
+import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import { Trade } from "@/app/lib/types";
 import Transaction from "@/app/models/Transaction";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const TradesPage = async () => {
   await connectDb();
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/auth/login");
+  }
 
   const data = await Transaction.find({}).lean();
   const trades = JSON.parse(JSON.stringify(data)) as Trade[];
