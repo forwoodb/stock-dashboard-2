@@ -1,6 +1,8 @@
 import StockForm from "@/app/components/StockForm";
+import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import Stock from "@/app/models/Stock";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 interface PageProps {
@@ -10,6 +12,13 @@ interface PageProps {
 const EditStockPage = async ({ params }: PageProps) => {
   // Get id from url params
   const { id } = await params;
+
+  // Get session info
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const userId = session?.user.id;
 
   // Get stock to edit
   const data = await Stock.findOne({ _id: id }).lean();
@@ -22,7 +31,7 @@ const EditStockPage = async ({ params }: PageProps) => {
     const ticker = formData.get("ticker");
     const company = formData.get("company");
 
-    await Stock.findByIdAndUpdate(id, { ticker, company });
+    await Stock.findByIdAndUpdate(id, { ticker, company, userId });
 
     redirect("/dashboard/stocks");
   };
