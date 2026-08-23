@@ -20,7 +20,9 @@ const WatchlistPage = async () => {
     redirect("/auth/login");
   }
 
-  const data = await Stock.find({ watchList: true }).lean();
+  const userId = session.user.id;
+
+  const data = await Stock.find({ watchList: true, userId }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
   const merge = mergeCSVData(stocks) as StockInfoType[];
@@ -34,6 +36,7 @@ const WatchlistPage = async () => {
     await Stock.findByIdAndUpdate(id, {
       watchList: false,
       position: true,
+      userId,
     });
 
     revalidatePath("/dashboard/watch-list");
