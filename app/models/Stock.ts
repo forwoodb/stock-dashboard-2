@@ -19,8 +19,7 @@ const stockSchema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    // Not required for now
-    required: false,
+    required: true,
   },
   watchList: {
     type: Boolean,

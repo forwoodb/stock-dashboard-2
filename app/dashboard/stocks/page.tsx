@@ -19,11 +19,8 @@ const StocksPage = async () => {
     redirect("/auth/login");
   }
 
-  console.log(session);
-
   // Get user
   const userId = session.user.id;
-  console.log(userId);
 
   // Get stocks
   const data = await Stock.find({ userId }).lean();
