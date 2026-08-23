@@ -31,7 +31,7 @@ const EditStockPage = async ({ params }: PageProps) => {
     const ticker = formData.get("ticker");
     const company = formData.get("company");
 
-    await Stock.findByIdAndUpdate(id, { userId, ticker, company });
+    await Stock.findOneAndUpdate({ _id: id, userId }, { ticker, company });
 
     redirect("/dashboard/stocks");
   };

@@ -83,6 +83,7 @@ const PositionsPage = async () => {
           />
         </div>
         <PositionSizesClient
+          userId={userId}
           data={merge}
           serverAction={toWatchList}
           accBal={balance}

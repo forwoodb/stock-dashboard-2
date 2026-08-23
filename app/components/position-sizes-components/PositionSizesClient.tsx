@@ -5,6 +5,7 @@ import { TableProps, StockInfoType } from "../../lib/types";
 import TradeForm from "./TradeForm";
 
 const PositionSizesClient = ({
+  userId,
   data,
   serverAction,
   accBal,
@@ -17,6 +18,7 @@ const PositionSizesClient = ({
     setTrade(true);
     const transaction = {
       _id: stock._id,
+      userId,
       ticker: stock.ticker,
       Time: stock.Time,
       Close: stock.Close,
