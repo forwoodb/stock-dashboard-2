@@ -26,7 +26,7 @@ const TradesPage = async () => {
     "use server";
     await connectDb();
 
-    await Transaction.findByIdAndDelete(id, { userId });
+    await Transaction.findOneAndDelete({ _id: id, userId });
 
     revalidatePath("/dashboard/trades");
   };

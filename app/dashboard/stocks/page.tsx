@@ -46,7 +46,7 @@ const StocksPage = async () => {
 
     const id = formData.get("id");
 
-    await Stock.findByIdAndDelete(id, { userId });
+    await Stock.findOneAndDelete({ _id: id, userId });
 
     revalidatePath("/dashboard/stocks");
   };
