@@ -2,10 +2,8 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const Navlinks = () => {
+const Navlinks = ({ role }: { role: string }) => {
   const path = usePathname();
-
-  console.log(path);
 
   return (
     <>
@@ -46,14 +44,16 @@ const Navlinks = () => {
           Trades
         </Link>
       </li>
-      <li>
-        <Link
-          href={"/admin"}
-          className={`${path === "/admin" && "text-white bg-black"}`}
-        >
-          Admin
-        </Link>
-      </li>
+      {role === "admin" && (
+        <li>
+          <Link
+            href={"/admin"}
+            className={`${path === "/admin" && "text-white bg-black"}`}
+          >
+            Admin
+          </Link>
+        </li>
+      )}
     </>
   );
 };

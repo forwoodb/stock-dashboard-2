@@ -1,8 +1,14 @@
 import AuthButton from "../auth-components/AuthButton";
 import Link from "next/link";
 import Navlinks from "./Navlinks";
+import { auth } from "@/app/lib/auth";
+import { headers } from "next/headers";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -43,16 +49,18 @@ const Navbar = () => {
             <li>
               <Link href={"/dashboard/trades"}>Trades</Link>
             </li>
-            <li>
-              <Link href={"/admin"}>Admin</Link>
-            </li>
+            {session?.user.role === "admin" && (
+              <li>
+                <Link href={"/admin"}>Admin</Link>
+              </li>
+            )}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Stock Dashboard</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <Navlinks />
+          <Navlinks role={session?.user.role} />
         </ul>
       </div>
       <div className="navbar-end">
