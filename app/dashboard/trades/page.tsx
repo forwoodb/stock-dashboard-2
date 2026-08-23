@@ -17,7 +17,9 @@ const TradesPage = async () => {
     redirect("/auth/login");
   }
 
-  const data = await Transaction.find({}).lean();
+  const userId = session.user.id;
+
+  const data = await Transaction.find({ userId }).lean();
   const trades = JSON.parse(JSON.stringify(data)) as Trade[];
 
   const deleteTradeAction = async (id: string) => {
