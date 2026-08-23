@@ -34,9 +34,9 @@ const WatchlistPage = async () => {
     const id = formData.get("id");
 
     await Stock.findByIdAndUpdate(id, {
+      userId,
       watchList: false,
       position: true,
-      userId,
     });
 
     revalidatePath("/dashboard/watch-list");

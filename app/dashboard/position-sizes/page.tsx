@@ -33,7 +33,7 @@ const PositionsPage = async () => {
 
   const stop = user.stopLoss;
 
-  const data = await Stock.find({ position: true }).lean();
+  const data = await Stock.find({ userId, position: true }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
   const runPython = async () => {
@@ -48,6 +48,7 @@ const PositionsPage = async () => {
     const id = formData.get("id");
 
     await Stock.findByIdAndUpdate(id, {
+      userId,
       positionSize: 0,
       averageCost: 0,
       watchList: true,
