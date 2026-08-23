@@ -21,7 +21,7 @@ const EditStockPage = async ({ params }: PageProps) => {
   const userId = session?.user.id;
 
   // Get stock to edit
-  const data = await Stock.findOne({ _id: id }).lean();
+  const data = await Stock.findOne({ _id: id, userId }).lean();
   const stock = JSON.parse(JSON.stringify(data));
 
   const updateStockAction = async (formData: FormData) => {
@@ -31,7 +31,7 @@ const EditStockPage = async ({ params }: PageProps) => {
     const ticker = formData.get("ticker");
     const company = formData.get("company");
 
-    await Stock.findByIdAndUpdate(id, { ticker, company, userId });
+    await Stock.findByIdAndUpdate(id, { userId, ticker, company });
 
     redirect("/dashboard/stocks");
   };
