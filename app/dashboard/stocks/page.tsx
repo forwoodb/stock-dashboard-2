@@ -19,6 +19,11 @@ const StocksPage = async () => {
     redirect("/auth/login");
   }
 
+  console.log(session);
+
+  // Get user
+
+  // Get stocks
   const data = await Stock.find({}).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
