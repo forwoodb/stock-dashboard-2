@@ -49,6 +49,7 @@ const StocksTable = ({ stocks, deleteStock }) => {
             <tr key={stock._id}>
               <td>{stock.ticker}</td>
               <td>{stock.company}</td>
+              <td>{stock.userId}</td>
               <td>
                 <Link
                   href={`/dashboard/stocks/edit/${stock._id}`}

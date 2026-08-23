@@ -22,9 +22,11 @@ const StocksPage = async () => {
   console.log(session);
 
   // Get user
+  const userId = session.user.id;
+  console.log(userId);
 
   // Get stocks
-  const data = await Stock.find({}).lean();
+  const data = await Stock.find({ userId }).lean();
   const stocks: StockType[] = JSON.parse(JSON.stringify(data));
 
   const createStockAction = async (formData: FormData) => {
@@ -34,7 +36,7 @@ const StocksPage = async () => {
     const ticker = formData.get("ticker");
     const company = formData.get("company");
 
-    const stock = await new Stock({ ticker, company });
+    const stock = await new Stock({ ticker, company, userId });
 
     await stock.save();
 
