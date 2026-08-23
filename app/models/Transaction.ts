@@ -20,6 +20,10 @@ const transactionSchema = new mongoose.Schema({
   fiftyDayAvg: Number,
   oneHundredDayAvg: Number,
   twoHundredDayAvg: Number,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
 });
 
 export default mongoose.models.Transaction ||
