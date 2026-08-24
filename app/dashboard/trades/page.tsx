@@ -17,6 +17,8 @@ const TradesPage = async () => {
     redirect("/auth/login");
   }
 
+  console.log(new Date());
+
   const userId = session.user.id;
 
   const data = await Transaction.find({ userId }).lean();
