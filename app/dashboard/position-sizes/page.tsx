@@ -24,8 +24,8 @@ const PositionsPage = async () => {
     redirect("/auth/login");
   }
 
+  // Get user data
   const userId = session.user.id;
-
   const userData = await User.findOne({ _id: userId }).lean();
   const user = JSON.parse(JSON.stringify(userData));
 
@@ -79,7 +79,6 @@ const PositionsPage = async () => {
             accBal={balance}
             stopLoss={stop}
             runPython={runPython}
-            // getStocks={getStocks}
           />
         </div>
         <PositionSizesClient

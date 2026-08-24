@@ -3,18 +3,19 @@ import { StockInfoType } from "@/app/lib/types";
 import { tradeAction } from "@/app/lib/actions";
 
 interface TradeFormPropTypes {
+  userId: string;
   transaction: StockInfoType;
   closeForm: () => void;
 }
 
-const TradeForm = ({ transaction, closeForm }: TradeFormPropTypes) => {
+const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
   return (
     <div>
       {/* Bind data to server action? */}
-      <form action={tradeAction}>
+      <form action={tradeAction.bind(null, userId)}>
         {/* <form onSubmit={handleSubmit}> */}
         <label className="floating-label">
-          <span>Price</span>
+          <span>Ticker</span>
           <input
             type="text"
             name="ticker"
@@ -26,8 +27,8 @@ const TradeForm = ({ transaction, closeForm }: TradeFormPropTypes) => {
         <label className="select">
           <span className="label">Type</span>
           <select name="type">
-            <option>Buy</option>
-            <option>Sell</option>
+            <option value={"Buy"}>Buy</option>
+            <option value={"Sell"}>Sell</option>
           </select>
         </label>
         <label className="floating-label">

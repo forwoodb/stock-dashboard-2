@@ -41,6 +41,7 @@ const PositionSizesClient = ({
         // adding a key remounts the form and updates the defaultValues
         <TradeForm
           key={transaction.ticker}
+          userId={userId}
           transaction={transaction}
           closeForm={() => setTrade(false)}
         />

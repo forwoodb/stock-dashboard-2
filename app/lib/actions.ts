@@ -16,11 +16,11 @@ export const loginGoogleAction = async () => {
   redirect(response.url!);
 };
 
-export const tradeAction = async (formData: FormData) => {
+export const tradeAction = async (userId: string, formData: FormData) => {
   await connectDb();
 
   const data = Object.fromEntries(formData);
-  const trade = await new Transaction(data);
 
-  trade.save();
+  const trade = new Transaction({ userId, ...data });
+  await trade.save();
 };

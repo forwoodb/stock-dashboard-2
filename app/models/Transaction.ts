@@ -22,6 +22,7 @@ const transactionSchema = new mongoose.Schema({
   twoHundredDayAvg: Number,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
 });
