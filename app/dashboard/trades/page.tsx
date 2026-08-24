@@ -38,7 +38,6 @@ const TradesPage = async () => {
           <th>Ticker</th>
           <th>Type</th>
           <th>Price</th>
-          <th>Pos Size</th>
           <th>$ Amt</th>
           <th>5D</th>
           <th>10D</th>
@@ -54,15 +53,14 @@ const TradesPage = async () => {
             <tr key={trade._id}>
               <td>{trade.ticker}</td>
               <td>{trade.type}</td>
-              <td>{trade.price}</td>
-              <td>{trade.positionSize}</td>
-              <td>{trade.dollarAmount}</td>
-              <td>{trade.fiveDayAvg}</td>
-              <td>{trade.tenDayAvg}</td>
-              <td>{trade.twentyDayAvg}</td>
-              <td>{trade.fiftyDayAvg}</td>
-              <td>{trade.oneHundredDayAvg}</td>
-              <td>{trade.twoHundredDayAvg}</td>
+              <td>${trade.price.toFixed(2)}</td>
+              <td>${trade.dollarAmount.toFixed(2)}</td>
+              <td>${trade.fiveDayAvg.toFixed(2)}</td>
+              <td>${trade.tenDayAvg.toFixed(2)}</td>
+              <td>${trade.twentyDayAvg.toFixed(2)}</td>
+              <td>${trade.fiftyDayAvg.toFixed(2)}</td>
+              <td>${trade.oneHundredDayAvg.toFixed(2)}</td>
+              <td>${trade.twoHundredDayAvg.toFixed(2)}</td>
               <td>
                 <form action={deleteTradeAction.bind(null, trade._id)}>
                   <button className="btn">Delete</button>
