@@ -85,4 +85,5 @@ export interface Trade {
   fiftyDayAvg: number;
   oneHundredDayAvg: number;
   twoHundredDayAvg: number;
+  createdAt: Date;
 }

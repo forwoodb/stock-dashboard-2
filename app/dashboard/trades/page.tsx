@@ -37,6 +37,9 @@ const TradesPage = async () => {
     <table className="table">
       <thead>
         <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Day</th>
           <th>Ticker</th>
           <th>Type</th>
           <th>Price</th>
@@ -53,6 +56,13 @@ const TradesPage = async () => {
         {trades.map((trade) => {
           return (
             <tr key={trade._id}>
+              <td>{new Date(trade.createdAt).toLocaleDateString()}</td>
+              <td>{new Date(trade.createdAt).toLocaleTimeString()}</td>
+              <td>
+                {new Date(trade.createdAt).toLocaleDateString("en-US", {
+                  weekday: "short",
+                })}
+              </td>
               <td>{trade.ticker}</td>
               <td>{trade.type}</td>
               <td>${trade.price.toFixed(2)}</td>
