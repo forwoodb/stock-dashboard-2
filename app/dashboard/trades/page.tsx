@@ -4,6 +4,7 @@ import { Trade } from "@/app/lib/types";
 import Transaction from "@/app/models/Transaction";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const TradesPage = async () => {
@@ -73,6 +74,11 @@ const TradesPage = async () => {
               <td>${trade.fiftyDayAvg.toFixed(2)}</td>
               <td>${trade.oneHundredDayAvg.toFixed(2)}</td>
               <td>${trade.twoHundredDayAvg.toFixed(2)}</td>
+              <td>
+                <Link href={`/dashboard/trades/${trade._id}`} className="btn">
+                  Edit
+                </Link>
+              </td>
               <td>
                 <form action={deleteTradeAction.bind(null, trade._id)}>
                   <button className="btn">Delete</button>
