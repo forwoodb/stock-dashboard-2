@@ -2,9 +2,15 @@ import React from "react";
 
 const EditTradePage = () => {
   return (
-    <div>
+    <main>
       <h1>Edit Trade</h1>
-    </div>
+      <form action="">
+        <label className="floating-label">
+          <span>Ticker</span>
+          <input type="text" placeholder="Ticker" className="input input-md" />
+        </label>
+      </form>
+    </main>
   );
 };
 
