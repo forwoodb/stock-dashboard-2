@@ -149,6 +149,11 @@ const PositionSizesTable = ({
                 <td>{stock.averageCost}</td>
                 <td>{stock.positionSize}</td>
                 <td>
+                  <button onClick={() => handleTrade(stock)} className="btn">
+                    Trade
+                  </button>
+                </td>
+                <td>
                   <form action={serverAction}>
                     <input type="hidden" name="id" value={stock._id} />
                     <button className="btn">Watch</button>
@@ -161,11 +166,6 @@ const PositionSizesTable = ({
                   >
                     Edit
                   </Link>
-                </td>
-                <td>
-                  <button onClick={() => handleTrade(stock)} className="btn">
-                    Trade
-                  </button>
                 </td>
               </tr>
             );
