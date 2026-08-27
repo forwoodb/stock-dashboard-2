@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const StocksTable = ({ stocks, deleteStock }) => {
-  const defaultSort = stocks.sort((a, b) => {
+  const defaultSort = [...stocks].sort((a, b) => {
     return a.ticker.localeCompare(b.ticker);
   });
 

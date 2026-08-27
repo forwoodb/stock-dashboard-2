@@ -100,7 +100,7 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
                 <td>{stock.Close}</td>
                 <td
                   className={
-                    stock.Close < (stock["5D"] ?? 0)
+                    Number(stock.Close) < Number(stock["5D"] ?? 0)
                       ? `text-red-500`
                       : (stock["5D"] ?? 0) > (stock[selectedMA] ?? 0)
                         ? `text-green-500`
@@ -110,27 +110,27 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
                   {stock["5D"]}
                 </td>
                 <td
-                  className={`${stock.Close < (stock["10D"] ?? 0) && `text-red-500`}`}
+                  className={`${Number(stock.Close) < Number(stock["10D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["10D"]}
                 </td>
                 <td
-                  className={`${stock.Close < (stock["20D"] ?? 0) && `text-red-500`}`}
+                  className={`${Number(stock.Close) < Number(stock["20D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["20D"]}
                 </td>
                 <td
-                  className={`${stock.Close < (stock["50D"] ?? 0) && `text-red-500`}`}
+                  className={`${Number(stock.Close) < Number(stock["50D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["50D"]}
                 </td>
                 <td
-                  className={`${stock.Close < (stock["100D"] ?? 0) && `text-red-500`}`}
+                  className={`${Number(stock.Close) < Number(stock["100D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["100D"]}
                 </td>
                 <td
-                  className={`${stock.Close < (stock["200D"] ?? 0) && `text-red-500`}`}
+                  className={`${Number(stock.Close) < Number(stock["200D"] ?? 0) && `text-red-500`}`}
                 >
                   {stock["200D"]}
                 </td>
