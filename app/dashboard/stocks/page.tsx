@@ -30,10 +30,11 @@ const StocksPage = async () => {
     "use server";
     await connectDb();
 
-    const ticker = formData.get("ticker");
+    const ticker = String(formData.get("ticker")).toUpperCase();
     const company = formData.get("company");
 
     const stock = await new Stock({ ticker, company, userId });
+    console.log(ticker);
 
     await stock.save();
 
