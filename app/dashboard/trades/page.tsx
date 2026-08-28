@@ -67,7 +67,7 @@ const TradesPage = async () => {
               <td>{trade.ticker}</td>
               <td>{trade.type}</td>
               <td>${trade.price.toFixed(2)}</td>
-              <td>${trade.dollarAmount.toFixed(2)}</td>
+              <td>${(trade.dollarAmount || 0).toFixed(2)}</td>
               <td>${trade.fiveDayAvg.toFixed(2)}</td>
               <td>${trade.tenDayAvg.toFixed(2)}</td>
               <td>${trade.twentyDayAvg.toFixed(2)}</td>
