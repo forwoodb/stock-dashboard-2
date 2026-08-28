@@ -11,10 +11,7 @@ const transactionSchema = new mongoose.Schema(
       required: true,
     },
     price: Number,
-    dollarAmount: {
-      type: Number,
-      required: true,
-    },
+    dollarAmount: Number,
     fiveDayAvg: Number,
     tenDayAvg: Number,
     twentyDayAvg: Number,
