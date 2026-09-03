@@ -1,3 +1,4 @@
+import DeleteTrade from "@/app/components/DeleteTrade";
 import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import { Trade } from "@/app/lib/types";
@@ -80,9 +81,7 @@ const TradesPage = async () => {
                 </Link>
               </td>
               <td>
-                <form action={deleteTradeAction.bind(null, trade._id)}>
-                  <button className="btn">Delete</button>
-                </form>
+                <DeleteTrade deleteTradeAction={deleteTradeAction} />
               </td>
             </tr>
           );
