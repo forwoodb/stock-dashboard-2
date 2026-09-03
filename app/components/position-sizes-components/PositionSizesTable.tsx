@@ -32,9 +32,9 @@ const PositionSizesTable = ({
   const avgAmt = Number(accBal) / data.length;
 
   return (
-    <table className="table">
+    <table className="table overflow-auto">
       <thead>
-        <tr>
+        <tr className="sticky top-0 bg-white">
           <th onClick={() => handleSort("ticker")} className={`cursor-pointer`}>
             Ticker
           </th>
