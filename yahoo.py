@@ -20,7 +20,7 @@ collection = db['stocks']
 df_data = pd.DataFrame()
 
 for stock in collection.find():
-  data = yf.download(tickers=stock['ticker'], period='200d', interval='1d')
+  data = yf.download(tickers=stock['ticker'], period='1y', interval='1d')
 
   # Reset the index to make 'Date' a regular column
   data.reset_index(inplace=True)

@@ -12,7 +12,10 @@ const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
   return (
     <div>
       {/* Bind data to server action? */}
-      <form action={tradeAction.bind(null, userId)}>
+      <form
+        action={tradeAction.bind(null, userId)}
+        className="flex justify-between items-center"
+      >
         {/* <form onSubmit={handleSubmit}> */}
         <label className="floating-label">
           <span>Ticker</span>
@@ -50,25 +53,33 @@ const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
             className="input input-md"
           />
         </label>
-        <input type="text" name="fiveDayAvg" defaultValue={transaction["5D"]} />
-        <input type="text" name="tenDayAvg" defaultValue={transaction["10D"]} />
         <input
-          type="text"
+          type="hidden"
+          name="fiveDayAvg"
+          defaultValue={transaction["5D"]}
+        />
+        <input
+          type="hidden"
+          name="tenDayAvg"
+          defaultValue={transaction["10D"]}
+        />
+        <input
+          type="hidden"
           name="twentyDayAvg"
           defaultValue={transaction["20D"]}
         />
         <input
-          type="text"
+          type="hidden"
           name="fiftyDayAvg"
           defaultValue={transaction["50D"]}
         />
         <input
-          type="text"
+          type="hidden"
           name="oneHundredDayAvg"
           defaultValue={transaction["100D"]}
         />
         <input
-          type="text"
+          type="hidden"
           name="twoHundredDayAvg"
           defaultValue={transaction["200D"]}
         />
