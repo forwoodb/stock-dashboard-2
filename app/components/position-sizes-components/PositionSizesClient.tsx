@@ -52,6 +52,7 @@ const PositionSizesClient = ({
         accBal={accBal}
         stopLoss={stopLoss}
         handleTrade={handleTrade}
+        trade={trade}
       />
     </div>
   );

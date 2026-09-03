@@ -10,7 +10,7 @@ interface TradeFormPropTypes {
 
 const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
   return (
-    <div>
+    <div className="sticky top-0 bg-white z-10">
       {/* Bind data to server action? */}
       <form
         action={tradeAction.bind(null, userId)}

@@ -9,6 +9,7 @@ export interface PositionsTableProps {
   accBal: string;
   stopLoss: string;
   handleTrade: (stock: StockInfoType) => void;
+  trade: boolean;
 }
 
 const PositionSizesTable = ({
@@ -17,6 +18,7 @@ const PositionSizesTable = ({
   accBal,
   stopLoss,
   handleTrade,
+  trade,
 }: PositionsTableProps) => {
   const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
@@ -34,7 +36,7 @@ const PositionSizesTable = ({
   return (
     <table className="table overflow-auto">
       <thead>
-        <tr className="sticky top-0 bg-white">
+        <tr className={`sticky ${trade ? "top-10" : "top-0"} bg-white`}>
           <th onClick={() => handleSort("ticker")} className={`cursor-pointer`}>
             Ticker
           </th>
