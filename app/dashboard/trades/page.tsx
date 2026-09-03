@@ -81,7 +81,10 @@ const TradesPage = async () => {
                 </Link>
               </td>
               <td>
-                <DeleteTrade deleteTradeAction={deleteTradeAction} />
+                <DeleteTrade
+                  deleteTradeAction={deleteTradeAction}
+                  trade={trade}
+                />
               </td>
             </tr>
           );

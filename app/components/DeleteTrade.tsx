@@ -1,9 +1,12 @@
 "use client";
 
+import { Trade } from "../lib/types";
+
 interface DeleteTradeProps {
-  deleteTradeAction: () => Promise<void>;
+  deleteTradeAction: (id: string) => Promise<void>;
+  trade: Trade;
 }
-const DeleteTrade = ({ deleteTradeAction }: DeleteTradeProps) => {
+const DeleteTrade = ({ deleteTradeAction, trade }: DeleteTradeProps) => {
   return (
     <div>
       <p>Are you sure?</p>
