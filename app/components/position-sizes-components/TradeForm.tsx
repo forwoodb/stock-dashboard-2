@@ -30,8 +30,8 @@ const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
         <label className="select">
           <span className="label">Type</span>
           <select name="type">
-            <option value={"Buy"}>Buy</option>
             <option value={"Sell"}>Sell</option>
+            <option value={"Buy"}>Buy</option>
           </select>
         </label>
         <label className="floating-label">
