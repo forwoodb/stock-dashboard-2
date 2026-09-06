@@ -12,6 +12,7 @@ import AccountBalanceForm from "@/app/components/position-sizes-components/Accou
 import StopLossForm from "@/app/components/position-sizes-components/StopLossForm";
 import AccountPositions from "@/app/components/position-sizes-components/AccountPositions";
 import { execFile } from "child_process";
+import Transaction from "@/app/models/Transaction";
 
 const PositionsPage = async () => {
   await connectDb();
@@ -56,6 +57,15 @@ const PositionsPage = async () => {
     });
     revalidatePath("/dashboard/position-sizes");
   };
+
+  const getPositionSize = async (ticker: string) => {
+    const trades = await Transaction.find({ ticker });
+    return trades;
+  };
+
+  const positionSize = await getPositionSize("ET");
+
+  console.log(positionSize);
 
   // // FastAPI route
   // const getStocks = async () => {

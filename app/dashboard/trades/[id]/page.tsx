@@ -48,13 +48,13 @@ const EditTradePage = async ({ params }: PageProps) => {
         </label>
         <label className="floating-label">
           <span>Type</span>
-          <input
-            type="text"
-            name="type"
-            placeholder="Type"
-            defaultValue={trade.type}
-            className="input input-md"
-          />
+          <label className="select">
+            <span className="label">Type</span>
+            <select name="type" defaultValue={trade.type}>
+              <option value={"Sell"}>Sell</option>
+              <option value={"Buy"}>Buy</option>
+            </select>
+          </label>
         </label>
         <label className="floating-label">
           <span>Price</span>
