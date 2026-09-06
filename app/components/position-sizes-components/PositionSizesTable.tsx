@@ -112,6 +112,11 @@ const PositionSizesTable = ({
                 key={stock._id}
                 className={`${pctAbvMA < 0 && `text-red-600`}`}
               >
+                <td>
+                  <button onClick={() => handleTrade(stock)} className="btn">
+                    Trade
+                  </button>
+                </td>
                 <td>{stock.ticker}</td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
@@ -150,11 +155,7 @@ const PositionSizesTable = ({
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 <td>{stock.averageCost}</td>
                 <td>{stock.positionSize}</td>
-                <td>
-                  <button onClick={() => handleTrade(stock)} className="btn">
-                    Trade
-                  </button>
-                </td>
+
                 <td>
                   <form action={serverAction}>
                     <input type="hidden" name="id" value={stock._id} />
