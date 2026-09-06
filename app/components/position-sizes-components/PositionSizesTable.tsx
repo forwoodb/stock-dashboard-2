@@ -37,6 +37,7 @@ const PositionSizesTable = ({
     <table className="table overflow-auto">
       <thead>
         <tr className={`sticky ${trade ? "top-10" : "top-0"} bg-white`}>
+          <th></th>
           <th onClick={() => handleSort("ticker")} className={`cursor-pointer`}>
             Ticker
           </th>
@@ -88,6 +89,8 @@ const PositionSizesTable = ({
           {/* <th>Loss $</th> */}
           <th>AvgCost</th>
           <th>PosSize</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
