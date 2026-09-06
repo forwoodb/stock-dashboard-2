@@ -46,6 +46,7 @@ const TradesPage = async () => {
           <th>Type</th>
           <th>Price</th>
           <th>$ Amt</th>
+          <th>Shares</th>
           <th>5D</th>
           <th>10D</th>
           <th>20D</th>
@@ -69,6 +70,7 @@ const TradesPage = async () => {
               <td>{trade.type}</td>
               <td>${trade.price.toFixed(2)}</td>
               <td>${(trade.dollarAmount || 0).toFixed(2)}</td>
+              <td>{(trade.shares || 0).toFixed(3)}</td>
               <td>${trade.fiveDayAvg.toFixed(2)}</td>
               <td>${trade.tenDayAvg.toFixed(2)}</td>
               <td>${trade.twentyDayAvg.toFixed(2)}</td>

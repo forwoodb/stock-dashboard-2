@@ -22,7 +22,9 @@ export const tradeAction = async (userId: string, formData: FormData) => {
 
   const data = Object.fromEntries(formData);
 
-  const trade = new Transaction({ userId, ...data });
+  const shares = Number(data.dollarAmount) / Number(data.price);
+
+  const trade = new Transaction({ userId, shares, ...data });
   await trade.save();
 
   revalidatePath("/dashboard/position-sizes");

@@ -79,6 +79,7 @@ export interface Trade {
   price: number;
   positionSize: number;
   dollarAmount: number;
+  shares: number;
   fiveDayAvg: number;
   tenDayAvg: number;
   twentyDayAvg: number;
