@@ -1,6 +1,7 @@
 "use client";
 import { StockInfoType } from "@/app/lib/types";
 import { tradeAction } from "@/app/lib/actions";
+import { useTransition } from "react";
 
 interface TradeFormPropTypes {
   userId: string;
@@ -9,13 +10,18 @@ interface TradeFormPropTypes {
 }
 
 const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
+  const [isPending, startTransition] = useTransition();
+
+  const handleSubmit = (formData: FormData) => {
+    startTransition(async () => {
+      await tradeAction(userId, formData);
+      closeForm();
+    });
+  };
   return (
     <div className="sticky top-0 bg-white z-10">
       {/* Bind data to server action? */}
-      <form
-        action={tradeAction.bind(null, userId)}
-        className="flex justify-between items-center"
-      >
+      <form action={handleSubmit} className="flex justify-between items-center">
         {/* <form onSubmit={handleSubmit}> */}
         <label className="floating-label">
           <span>Ticker</span>
@@ -83,7 +89,7 @@ const TradeForm = ({ userId, transaction, closeForm }: TradeFormPropTypes) => {
           name="twoHundredDayAvg"
           defaultValue={transaction["200D"]}
         />
-        <button className="btn">Trade</button>
+        <button className="btn">{isPending ? "Trading..." : "Trade"}</button>
         <p onClick={closeForm} className="cursor-pointer">
           X Close
         </p>
