@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { connectDb } from "./mongodb";
 import { auth } from "./auth";
 import Transaction from "../models/Transaction";
+import { revalidatePath } from "next/cache";
 
 export const loginGoogleAction = async () => {
   await connectDb();
@@ -23,4 +24,6 @@ export const tradeAction = async (userId: string, formData: FormData) => {
 
   const trade = new Transaction({ userId, ...data });
   await trade.save();
+
+  revalidatePath("/dashboard/position-sizes");
 };
