@@ -60,7 +60,13 @@ const PositionsPage = async () => {
 
   const getPositionSize = async (ticker: string) => {
     const trades = await Transaction.find({ ticker });
-    return trades;
+    let total = 0;
+    trades.forEach((trade) => {
+      if (trade.type === "Buy") {
+        return (total = total + trade.dollarAmount);
+      }
+    });
+    return total;
   };
 
   const positionSize = await getPositionSize("ET");

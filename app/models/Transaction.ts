@@ -12,6 +12,7 @@ const transactionSchema = new mongoose.Schema(
     },
     price: Number,
     dollarAmount: Number,
+    shares: Number,
     fiveDayAvg: Number,
     tenDayAvg: Number,
     twentyDayAvg: Number,
