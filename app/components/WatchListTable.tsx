@@ -21,9 +21,9 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
   };
 
   return (
-    <table className="table">
+    <table className="table overflow-auto">
       <thead>
-        <tr>
+        <tr className="sticky top-0 bg-white">
           <th onClick={() => handleSort("ticker")} className={`cursor-pointer`}>
             Ticker
           </th>
@@ -71,6 +71,8 @@ const WatchListTable = ({ mode, data, formAction }: WatchListProps) => {
           >
             Cl&gt;MA
           </th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
