@@ -1,5 +1,8 @@
+import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import Transaction from "@/app/models/Transaction";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -11,12 +14,22 @@ const EditTradePage = async ({ params }: PageProps) => {
   const data = await Transaction.findOne({ _id: id }).lean();
   const trade = JSON.parse(JSON.stringify(data));
 
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const userId = session?.user.id;
+
   const updateTrade = async (formData: FormData) => {
     "use server";
     await connectDb();
 
-    const data = Object.fromEntries(formData);
-    console.log(data);
+    const updatedData = Object.fromEntries(formData);
+
+    await Transaction.findOneAndUpdate({ _id: id, userId }, updatedData);
+    console.log({ updatedData });
+
+    redirect("/dashboard/trades");
   };
 
   return (
