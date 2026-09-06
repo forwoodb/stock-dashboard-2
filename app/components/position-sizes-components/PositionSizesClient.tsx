@@ -10,6 +10,7 @@ const PositionSizesClient = ({
   serverAction,
   accBal,
   stopLoss,
+  trades,
 }: TableProps) => {
   const [trade, setTrade] = useState(false);
   const [transaction, setTransaction] = useState<StockInfoType | null>(null);
@@ -53,6 +54,7 @@ const PositionSizesClient = ({
         stopLoss={stopLoss}
         handleTrade={handleTrade}
         trade={trade}
+        trades={trades}
       />
     </div>
   );

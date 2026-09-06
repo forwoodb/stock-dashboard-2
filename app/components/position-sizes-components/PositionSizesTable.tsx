@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { MAKey, StockInfoType } from "../../lib/types";
+import { MAKey, StockInfoType, Trade } from "../../lib/types";
 import { useState } from "react";
 
 export interface PositionsTableProps {
@@ -19,6 +19,7 @@ const PositionSizesTable = ({
   stopLoss,
   handleTrade,
   trade,
+  trades,
 }: PositionsTableProps) => {
   const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
   const [sortColumn, setSortColumn] = useState("ticker");
@@ -32,6 +33,22 @@ const PositionSizesTable = ({
   };
 
   const avgAmt = Number(accBal) / data.length;
+
+  const getPositionSize = (ticker: string) => {
+    let numShares = 0;
+    trades.forEach((trade: Trade) => {
+      if (trade.ticker === ticker) {
+        if (trade.type === "Buy") {
+          numShares += trade.shares;
+        }
+        if (trade.type === "Sell") {
+          numShares -= trade.shares;
+        }
+        console.log(numShares);
+      }
+    });
+    return numShares;
+  };
 
   return (
     <table className="table overflow-auto">
@@ -157,7 +174,7 @@ const PositionSizesTable = ({
                 <td>${entry.toFixed(2)}</td>
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 <td>{stock.averageCost}</td>
-                <td>{stock.positionSize}</td>
+                <td>{getPositionSize(stock.ticker) * stock.Close}</td>
 
                 <td>
                   <form action={serverAction}>

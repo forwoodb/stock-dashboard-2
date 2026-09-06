@@ -58,20 +58,8 @@ const PositionsPage = async () => {
     revalidatePath("/dashboard/position-sizes");
   };
 
-  const getPositionSize = async (ticker: string) => {
-    const trades = await Transaction.find({ ticker });
-    let total = 0;
-    trades.forEach((trade) => {
-      if (trade.type === "Buy") {
-        return (total = total + trade.dollarAmount);
-      }
-    });
-    return total;
-  };
-
-  const positionSize = await getPositionSize("ET");
-
-  console.log(positionSize);
+  const tradeData = await Transaction.find({ userId }).lean();
+  const trades = JSON.parse(JSON.stringify(tradeData));
 
   // // FastAPI route
   // const getStocks = async () => {
@@ -103,6 +91,7 @@ const PositionsPage = async () => {
           serverAction={toWatchList}
           accBal={balance}
           stopLoss={stop}
+          trades={trades}
         />
       </div>
     </main>
