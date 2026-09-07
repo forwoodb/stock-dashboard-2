@@ -10,6 +10,7 @@ export interface PositionsTableProps {
   stopLoss: string;
   handleTrade: (stock: StockInfoType) => void;
   trade: boolean;
+  trades: Trade[];
 }
 
 const PositionSizesTable = ({
