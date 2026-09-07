@@ -70,6 +70,7 @@ export interface TableProps {
   serverAction: (formData: FormData) => Promise<void>;
   accBal: string;
   stopLoss: string;
+  trades: Trade[];
 }
 
 export interface Trade {
