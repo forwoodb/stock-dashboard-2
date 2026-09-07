@@ -78,6 +78,16 @@ const EditTradePage = async ({ params }: PageProps) => {
           />
         </label>
         <label className="floating-label">
+          <span>Created At</span>
+          <input
+            type="text"
+            name="createdAt"
+            placeholder="Created At"
+            defaultValue={trade.createdAt}
+            className="input input-md"
+          />
+        </label>
+        <label className="floating-label">
           <span>5D</span>
           <input
             type="text"
