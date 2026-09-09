@@ -26,8 +26,12 @@ const EditTradePage = async ({ params }: PageProps) => {
 
     const updatedData = Object.fromEntries(formData);
 
-    await Transaction.findOneAndUpdate({ _id: id, userId }, updatedData);
-    console.log({ updatedData });
+    const shares = Number(updatedData.dollarAmount) / Number(updatedData.price);
+
+    await Transaction.findOneAndUpdate(
+      { _id: id, userId },
+      { ...updatedData, shares },
+    );
 
     redirect("/dashboard/trades");
   };
