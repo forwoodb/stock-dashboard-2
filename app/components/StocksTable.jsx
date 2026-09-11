@@ -20,12 +20,14 @@ const StocksTable = ({ stocks, deleteStock }) => {
         }
         if (sortOrder.order === "desc") {
           setSortOrder({ key, order: "asc" });
-          return stocks;
+          // return stocks;
+          return a[key].localeCompare(b[key]);
         }
       })
       .map((stock) => {
         return stock;
       });
+    console.log(sortOrder.order);
 
     setSortedStocks(sorted);
   };

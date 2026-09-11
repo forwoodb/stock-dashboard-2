@@ -23,14 +23,14 @@ const PositionSizesTable = ({
   trades,
 }: PositionsTableProps) => {
   const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
-  const [sortColumn, setSortColumn] = useState("ticker");
+  const [sortColumn, setSortColumn] = useState({ col: "ticker", dir: "asc" });
 
   const handleSelectMA = (ma: MAKey) => {
     setSelectedMA(ma);
   };
 
   const handleSort = (col: string) => {
-    setSortColumn(col);
+    setSortColumn({ col });
   };
 
   const avgAmt = Number(accBal) / data.length;
@@ -65,8 +65,6 @@ const PositionSizesTable = ({
         }
       }
     });
-    console.log(cost);
-    console.log(numShares);
 
     return Number(cost) / Number(numShares) || 0;
   };
