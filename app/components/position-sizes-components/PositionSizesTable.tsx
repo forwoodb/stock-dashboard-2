@@ -68,7 +68,7 @@ const PositionSizesTable = ({
     console.log(cost);
     console.log(numShares);
 
-    return Number(cost) / Number(numShares);
+    return Number(cost) / Number(numShares) || 0;
   };
 
   return (
@@ -195,7 +195,7 @@ const PositionSizesTable = ({
                 <td>${entry.toFixed(2)}</td>
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 {/* <td>{stock.averageCost}</td> */}
-                <td>${getAvgCost(stock.ticker)}</td>
+                <td>${getAvgCost(stock.ticker).toFixed(2)}</td>
                 <td>
                   ${(getPositionSize(stock.ticker) * stock.Close).toFixed(2)}
                 </td>
