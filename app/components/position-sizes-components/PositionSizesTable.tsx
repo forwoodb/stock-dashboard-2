@@ -45,10 +45,30 @@ const PositionSizesTable = ({
         if (trade.type === "Sell") {
           numShares -= trade.shares;
         }
-        console.log(numShares);
       }
     });
     return numShares;
+  };
+
+  const getAvgCost = (ticker: string) => {
+    let cost = 0;
+    let numShares = 0;
+    trades.forEach((trade: Trade) => {
+      if (trade.ticker === ticker) {
+        if (trade.type === "Buy") {
+          cost += trade.dollarAmount;
+          numShares += trade.shares;
+        }
+        if (trade.type === "Sell") {
+          cost -= trade.dollarAmount;
+          numShares -= trade.shares;
+        }
+      }
+    });
+    console.log(cost);
+    console.log(numShares);
+
+    return Number(cost) / Number(numShares);
   };
 
   return (
@@ -174,8 +194,11 @@ const PositionSizesTable = ({
                 <td>{pctAbvMA.toFixed(2)}%</td>
                 <td>${entry.toFixed(2)}</td>
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
-                <td>{stock.averageCost}</td>
-                <td>{getPositionSize(stock.ticker) * stock.Close}</td>
+                {/* <td>{stock.averageCost}</td> */}
+                <td>${getAvgCost(stock.ticker)}</td>
+                <td>
+                  ${(getPositionSize(stock.ticker) * stock.Close).toFixed(2)}
+                </td>
 
                 <td>
                   <form action={serverAction}>
