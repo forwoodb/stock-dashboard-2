@@ -30,8 +30,18 @@ const EditUserPage = async ({ params }: EditPageProps) => {
         action={updateUser}
         className="flex flex-col gap-4 w-xs p-4 mx-auto"
       >
-        <input type="text" name="name" value={user.name} className="input" />
-        <input type="text" name="email" value={user.email} className="input" />
+        <input
+          type="text"
+          name="name"
+          defaultValue={user.name}
+          className="input"
+        />
+        <input
+          type="text"
+          name="email"
+          defaultValue={user.email}
+          className="input"
+        />
         <select name="role" id="role" className="select">
           <option value="user" selected={user.role === "user"}>
             User
