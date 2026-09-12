@@ -164,6 +164,7 @@ const PositionSizesTable = ({
             const posSize = (
               getPositionSize(stock.ticker) * stock.Close
             ).toFixed(2);
+            const avgCost = getAvgCost(stock.ticker).toFixed(2);
 
             return (
               <tr
@@ -176,7 +177,11 @@ const PositionSizesTable = ({
                   </button>
                 </td>
                 <td>{stock.ticker}</td>
-                <td>${posSize}</td>
+                <td
+                  className={`${Number(avgCost) < Number(stock[selectedMA]) && "text-green-500"}`}
+                >
+                  ${posSize}
+                </td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
@@ -213,7 +218,11 @@ const PositionSizesTable = ({
                 <td>${entry.toFixed(2)}</td>
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 {/* <td>{stock.averageCost}</td> */}
-                <td>${getAvgCost(stock.ticker).toFixed(2)}</td>
+                <td
+                  className={`${Number(avgCost) < Number(stock[selectedMA]) && "text-green-500"}`}
+                >
+                  ${avgCost}
+                </td>
 
                 <td>
                   <form action={serverAction}>
