@@ -83,6 +83,7 @@ const PositionSizesTable = ({
           <th onClick={() => handleSort("ticker")} className={`cursor-pointer`}>
             Ticker
           </th>
+          <th>PosSize</th>
           <th>Time</th>
           <th>Close</th>
           <th
@@ -130,7 +131,6 @@ const PositionSizesTable = ({
           <th>Entry</th>
           {/* <th>Loss $</th> */}
           <th>AvgCost</th>
-          <th>PosSize</th>
           <th></th>
           <th></th>
         </tr>
@@ -171,6 +171,9 @@ const PositionSizesTable = ({
                   </button>
                 </td>
                 <td>{stock.ticker}</td>
+                <td>
+                  ${(getPositionSize(stock.ticker) * stock.Close).toFixed(2)}
+                </td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
@@ -208,9 +211,6 @@ const PositionSizesTable = ({
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 {/* <td>{stock.averageCost}</td> */}
                 <td>${getAvgCost(stock.ticker).toFixed(2)}</td>
-                <td>
-                  ${(getPositionSize(stock.ticker) * stock.Close).toFixed(2)}
-                </td>
 
                 <td>
                   <form action={serverAction}>
