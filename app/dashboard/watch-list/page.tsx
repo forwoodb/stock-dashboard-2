@@ -42,9 +42,17 @@ const WatchlistPage = async () => {
     revalidatePath("/dashboard/watch-list");
   };
 
+  let count = 0;
+  for (let i = 0; i < data.length; i++) {
+    count += 1;
+  }
+
+  console.log(count);
+
   return (
     <div>
       <h1>Watch List Page</h1>
+      <p>Total Stocks: {count}</p>
       <WatchListTable mode="watchList" data={merge} formAction={toPosition} />
     </div>
   );
