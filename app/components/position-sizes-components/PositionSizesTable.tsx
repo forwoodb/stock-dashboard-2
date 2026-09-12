@@ -23,14 +23,20 @@ const PositionSizesTable = ({
   trades,
 }: PositionsTableProps) => {
   const [selectedMA, setSelectedMA] = useState<MAKey>("10D");
-  const [sortColumn, setSortColumn] = useState({ col: "ticker", dir: "asc" });
+  const [sortColumn, setSortColumn] = useState({ key: "ticker", dir: "asc" });
 
   const handleSelectMA = (ma: MAKey) => {
     setSelectedMA(ma);
   };
 
   const handleSort = (col: string) => {
-    setSortColumn({ col });
+    console.log(sortColumn.key);
+    if (sortColumn.dir === "asc") {
+      setSortColumn({ key: col, dir: "dsc" });
+    }
+    if (sortColumn.dir === "dsc") {
+      setSortColumn({ key: col, dir: "asc" });
+    }
   };
 
   const avgAmt = Number(accBal) / data.length;
@@ -134,10 +140,18 @@ const PositionSizesTable = ({
           .sort((a, b) => {
             const aPct = ((a.Close - (a[selectedMA] ?? 0)) / a.Close) * 100;
             const bPct = ((b.Close - (b[selectedMA] ?? 0)) / b.Close) * 100;
-            if (sortColumn === "ticker") {
+            console.log(sortColumn);
+
+            if (sortColumn.key === "ticker") {
+              if (sortColumn.dir === "asc") {
+                return b.ticker.localeCompare(a.ticker);
+              }
               return a.ticker.localeCompare(b.ticker);
             } else {
-              return bPct - aPct;
+              if (sortColumn.dir === "asc") {
+                return bPct - aPct;
+              }
+              return aPct - bPct;
             }
           })
           .map((stock) => {

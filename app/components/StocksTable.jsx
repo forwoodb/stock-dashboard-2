@@ -27,7 +27,6 @@ const StocksTable = ({ stocks, deleteStock }) => {
       .map((stock) => {
         return stock;
       });
-    console.log(sortOrder.order);
 
     setSortedStocks(sorted);
   };
