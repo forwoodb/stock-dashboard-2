@@ -29,8 +29,7 @@ const PositionSizesTable = ({
     setSelectedMA(ma);
   };
 
-  const handleSort = (col: string) => {
-    console.log(sortColumn.key);
+  const handleSortDir = (col: string) => {
     if (sortColumn.dir === "asc") {
       setSortColumn({ key: col, dir: "dsc" });
     }
@@ -80,7 +79,10 @@ const PositionSizesTable = ({
       <thead>
         <tr className={`sticky ${trade ? "top-10" : "top-0"} bg-white`}>
           <th></th>
-          <th onClick={() => handleSort("ticker")} className={`cursor-pointer`}>
+          <th
+            onClick={() => handleSortDir("ticker")}
+            className={`cursor-pointer`}
+          >
             Ticker
           </th>
           <th>PosSize</th>
@@ -123,7 +125,7 @@ const PositionSizesTable = ({
             200D
           </th>
           <th
-            onClick={() => handleSort("pctAbvMA")}
+            onClick={() => handleSortDir("pctAbvMA")}
             className={`cursor-pointer`}
           >
             Cl&gt;MA
@@ -159,6 +161,9 @@ const PositionSizesTable = ({
               ((stock.Close - (stock[selectedMA] ?? 0)) / stock.Close) * 100;
 
             const entry = (Number(stopLoss) / pctAbvMA) * avgAmt;
+            const posSize = (
+              getPositionSize(stock.ticker) * stock.Close
+            ).toFixed(2);
 
             return (
               <tr
@@ -171,9 +176,7 @@ const PositionSizesTable = ({
                   </button>
                 </td>
                 <td>{stock.ticker}</td>
-                <td>
-                  ${(getPositionSize(stock.ticker) * stock.Close).toFixed(2)}
-                </td>
+                <td>${posSize}</td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
