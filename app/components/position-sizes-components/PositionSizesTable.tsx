@@ -86,6 +86,7 @@ const PositionSizesTable = ({
             Ticker
           </th>
           <th>PosSize</th>
+          <th>Entry</th>
           <th>Time</th>
           <th>Close</th>
           <th
@@ -130,7 +131,6 @@ const PositionSizesTable = ({
           >
             Cl&gt;MA
           </th>
-          <th>Entry</th>
           {/* <th>Loss $</th> */}
           <th>AvgCost</th>
           <th></th>
@@ -181,6 +181,7 @@ const PositionSizesTable = ({
                 >
                   ${posSize}
                 </td>
+                <td>${entry.toFixed(2)}</td>
                 <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
@@ -214,7 +215,6 @@ const PositionSizesTable = ({
                   {stock["200D"]}
                 </td>
                 <td>{pctAbvMA.toFixed(2)}%</td>
-                <td>${entry.toFixed(2)}</td>
                 {/* <td>{(entry * (pctAbvMA / 100)).toFixed(2)}</td> */}
                 {/* <td>{stock.averageCost}</td> */}
                 <td

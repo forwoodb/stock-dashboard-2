@@ -8,9 +8,10 @@ interface ExportCSVProps {
 
 const ExportCSV = ({ trades }: ExportCSVProps) => {
   const createCSV = (data: Trade[], filename = "trades.csv") => {
+    // Create Headers
     const headers = Object.keys(data[0]);
 
-    // 2. Build CSV rows
+    // Build CSV rows
     const csv = [
       headers.join(","),
       ...data.map((row) =>
@@ -18,6 +19,7 @@ const ExportCSV = ({ trades }: ExportCSVProps) => {
       ),
     ].join("\n");
 
+    //
     const blob = new Blob([csv], { type: "text/csv; charset=utf-8" });
 
     const url = URL.createObjectURL(blob);
