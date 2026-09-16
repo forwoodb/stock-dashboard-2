@@ -7,11 +7,35 @@ interface ExportCSVProps {
 }
 
 const ExportCSV = ({ trades }: ExportCSVProps) => {
-  console.log(trades);
+  const createCSV = (data: Trade[], filename = "trades.csv") => {
+    const headers = Object.keys(data[0]);
+
+    // 2. Build CSV rows
+    const csv = [
+      headers.join(","),
+      ...data.map((row) =>
+        headers.map((header) => row[header as keyof typeof row]).join(","),
+      ),
+    ].join("\n");
+
+    const blob = new Blob([csv], { type: "text/csv; charset=utf-8" });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
+
+  // createCSV(trades);
 
   return (
     <div>
-      <button className="btn">Export Trades to CSV</button>
+      <button onClick={() => createCSV(trades)} className="btn">
+        Export Trades to CSV
+      </button>
     </div>
   );
 };
