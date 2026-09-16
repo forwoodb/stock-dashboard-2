@@ -142,15 +142,14 @@ const PositionSizesTable = ({
           .sort((a, b) => {
             const aPct = ((a.Close - (a[selectedMA] ?? 0)) / a.Close) * 100;
             const bPct = ((b.Close - (b[selectedMA] ?? 0)) / b.Close) * 100;
-            console.log(sortColumn);
 
             if (sortColumn.key === "ticker") {
-              if (sortColumn.dir === "asc") {
+              if (sortColumn.dir === "dsc") {
                 return b.ticker.localeCompare(a.ticker);
               }
               return a.ticker.localeCompare(b.ticker);
             } else {
-              if (sortColumn.dir === "asc") {
+              if (sortColumn.dir === "dsc") {
                 return bPct - aPct;
               }
               return aPct - bPct;

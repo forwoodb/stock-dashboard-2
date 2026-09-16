@@ -36,63 +36,66 @@ const TradesPage = async () => {
   };
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Day</th>
-          <th>Ticker</th>
-          <th>Type</th>
-          <th>Price</th>
-          <th>$ Amt</th>
-          <th>Shares</th>
-          <th>5D</th>
-          <th>10D</th>
-          <th>20D</th>
-          <th>50D</th>
-          <th>100D</th>
-          <th>200D</th>
-        </tr>
-      </thead>
-      <tbody>
-        {trades.map((trade) => {
-          return (
-            <tr key={trade._id}>
-              <td>{new Date(trade.createdAt).toLocaleDateString()}</td>
-              <td>{new Date(trade.createdAt).toLocaleTimeString()}</td>
-              <td>
-                {new Date(trade.createdAt).toLocaleDateString("en-US", {
-                  weekday: "short",
-                })}
-              </td>
-              <td>{trade.ticker}</td>
-              <td>{trade.type}</td>
-              <td>${trade.price.toFixed(2)}</td>
-              <td>${(trade.dollarAmount || 0).toFixed(2)}</td>
-              <td>{(trade.shares || 0).toFixed(3)}</td>
-              <td>${trade.fiveDayAvg.toFixed(2)}</td>
-              <td>${trade.tenDayAvg.toFixed(2)}</td>
-              <td>${trade.twentyDayAvg.toFixed(2)}</td>
-              <td>${trade.fiftyDayAvg.toFixed(2)}</td>
-              <td>${trade.oneHundredDayAvg.toFixed(2)}</td>
-              <td>${trade.twoHundredDayAvg.toFixed(2)}</td>
-              <td>
-                <Link href={`/dashboard/trades/${trade._id}`} className="btn">
-                  Edit
-                </Link>
-              </td>
-              <td>
-                <DeleteTrade
-                  deleteTradeAction={deleteTradeAction}
-                  trade={trade}
-                />
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <main>
+      <button className="btn">Export Trades to CSV</button>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Day</th>
+            <th>Ticker</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>$ Amt</th>
+            <th>Shares</th>
+            <th>5D</th>
+            <th>10D</th>
+            <th>20D</th>
+            <th>50D</th>
+            <th>100D</th>
+            <th>200D</th>
+          </tr>
+        </thead>
+        <tbody>
+          {trades.map((trade) => {
+            return (
+              <tr key={trade._id}>
+                <td>{new Date(trade.createdAt).toLocaleDateString()}</td>
+                <td>{new Date(trade.createdAt).toLocaleTimeString()}</td>
+                <td>
+                  {new Date(trade.createdAt).toLocaleDateString("en-US", {
+                    weekday: "short",
+                  })}
+                </td>
+                <td>{trade.ticker}</td>
+                <td>{trade.type}</td>
+                <td>${trade.price.toFixed(2)}</td>
+                <td>${(trade.dollarAmount || 0).toFixed(2)}</td>
+                <td>{(trade.shares || 0).toFixed(3)}</td>
+                <td>${trade.fiveDayAvg.toFixed(2)}</td>
+                <td>${trade.tenDayAvg.toFixed(2)}</td>
+                <td>${trade.twentyDayAvg.toFixed(2)}</td>
+                <td>${trade.fiftyDayAvg.toFixed(2)}</td>
+                <td>${trade.oneHundredDayAvg.toFixed(2)}</td>
+                <td>${trade.twoHundredDayAvg.toFixed(2)}</td>
+                <td>
+                  <Link href={`/dashboard/trades/${trade._id}`} className="btn">
+                    Edit
+                  </Link>
+                </td>
+                <td>
+                  <DeleteTrade
+                    deleteTradeAction={deleteTradeAction}
+                    trade={trade}
+                  />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </main>
   );
 };
 
