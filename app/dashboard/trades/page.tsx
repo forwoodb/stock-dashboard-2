@@ -1,4 +1,5 @@
 import DeleteTrade from "@/app/components/DeleteTrade";
+import ExportCSV from "@/app/components/ExportCSV";
 import { auth } from "@/app/lib/auth";
 import { connectDb } from "@/app/lib/mongodb";
 import { Trade } from "@/app/lib/types";
@@ -37,7 +38,7 @@ const TradesPage = async () => {
 
   return (
     <main>
-      <button className="btn">Export Trades to CSV</button>
+      <ExportCSV trades={trades} />
       <table className="table">
         <thead>
           <tr>
