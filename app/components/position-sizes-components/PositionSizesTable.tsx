@@ -85,9 +85,9 @@ const PositionSizesTable = ({
           >
             Ticker
           </th>
+          <th>Time</th>
           <th>PosSize</th>
           <th>Entry</th>
-          <th>Time</th>
           <th>Close</th>
           <th
             onClick={() => handleSelectMA("5D")}
@@ -176,13 +176,13 @@ const PositionSizesTable = ({
                   </button>
                 </td>
                 <td>{stock.ticker}</td>
+                <td>{stock.Time}</td>
                 <td
                   className={`${Number(avgCost) < Number(stock[selectedMA]) && "text-green-500"}`}
                 >
                   ${posSize}
                 </td>
                 <td>${entry.toFixed(2)}</td>
-                <td>{stock.Time}</td>
                 <td>{stock.Close}</td>
                 <td
                   className={`${Number(stock.Close) < Number(stock["5D"] ?? 0) && `text-red-500`}`}
